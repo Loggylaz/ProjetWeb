@@ -9,7 +9,7 @@
         <input type="password" class="form-control" id="idmdp" name="mdp">
     </div>
     <button type="submit" class="btn btn-primary">Se connecter</button>
-    <a href="<?=ROOT_PATH?>signup" class="btn btn-primary">Créer un compte</a>
+    <a href="<?=ROOT_PATH?>signup" class="btn btn-primary">S'enregistrer</a>
 </form>
 <?php
 $title = "Se connecter";

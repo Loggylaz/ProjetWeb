@@ -25,9 +25,10 @@
         <input type="text" class="form-control" id="idprenom" name="prenom">
     </div>
     <button type="submit" class="btn btn-primary">S'enregistrer</button>
+    <a href="<?=ROOT_PATH?>login" class="btn btn-primary">Se connecter</a
 </form>
 <?php
-$title = "Créer un compte";
+$title = "S'enregistrer";
 $content = ob_get_clean();
 include 'includes/template.php';
 ?>

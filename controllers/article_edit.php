@@ -12,29 +12,22 @@ else {
     header("Location: ".ROOT_PATH."admin_article");
     exit();
 }
-if(!$user){
+if(!$article){
     http_response_code(404);
     include 'views/404.php';
     exit();
 }
 
-if (!empty($_POST) && !empty($_POST['login']) && !empty($_POST['email'])){
-    if($_POST['mdp'] != $_POST['confirmmdp'])
-    {
-        $_SESSION['error'] = "Votre mot de passe et votre mot de passe de confirmation ne correspondent pas...";
-    }
-    else
-    {
-        setUser($user['id'], $_POST['login'], $_POST['email'], $_POST['mdp'], $_POST['rue'], $_POST['numero'], $_POST['cp'], $_POST['localite'], $_POST['pays']);
-        $_SESSION['message'] = 'L\'utilisateur '.$user['login'].' a bien été mis à jour';
-        header("Location: ".ROOT_PATH);
+if (!empty($_POST) && !empty($_POST['nom']) && !empty($_POST['prix'])){
+        setArticle($article['id'], $_POST['nom'], $_POST['prix'], $_POST['stock'], $_POST['poid'], $_POST['marque'], $_POST['categorieID'], $_POST['image'], $_POST['description']);
+        $_SESSION['message'] = 'L\'article '.$article['nom'].' a bien été mis à jour';
+        header("Location: ".ROOT_PATH."admin_article");
         exit();
-    }
 }
-else if(!empty($_POST['login']) || !empty($_POST['email'])){
-    $_SESSION['error'] = "Login et Email ne peuvent pas être vide !";
+else if(!empty($_POST['nom']) || !empty($_POST['prix'])){
+    $_SESSION['error'] = "Le nom et le prix sont des champs obligatoire !";
 }
 
 
-include 'views/user_edit.php';
+include 'views/article_edit.php';
 ?>

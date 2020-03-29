@@ -29,15 +29,12 @@ require_once 'models/users.php';
                         <a class="dropdown-item" href="#">Another action</a>
                     </div>
                 </li>
-                    <?php
-                        if (!empty($_SESSION['id'])) {
-                            $user = getUserByID($_SESSION['id']);
-                            if ($user['roleID'] == 1):
-                    ?>
+                    <?php if (!empty($_SESSION['id']) && checkUserRole($_SESSION['id']) == 1):?>
                         <li class="nav-item active"><a class="nav-link" href="<?=ROOT_PATH?>admin_user">Administration utilisateurs</a></li>
-                            <?php elseif($user['roleID'] == 2):?>
+                    <?php endif?>
+                    <?php if (!empty($_SESSION['id']) && checkUserRole($_SESSION['id']) <= 2):?>
                         <li class="nav-item active"><a class="nav-link" href="<?=ROOT_PATH?>admin_article">Administration articles</a></li>
-                            <?php endif; }?>
+                    <?php endif?>
                 </ul>
                 <?php if(empty($_SESSION['id'])):?>
                     <a href="<?=ROOT_PATH?>login" class="btn btn-outline-success my-2 my-sm-0">Se connecter</a>

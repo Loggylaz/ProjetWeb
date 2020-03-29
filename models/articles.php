@@ -21,12 +21,41 @@ function getArticle($nom) {
     }
 }
 
+function getArticleById($id) {
+    $reponse = getDB()->prepare('SELECT * FROM ARTICLE WHERE id = :id');
+    $reponse->execute([':id' => $id]);
+    $article = $reponse->fetch();
+    $reponse->closeCursor(); // Termine le traitement de la requête
+    return $article;
+}
+
 function getArticleByName($name) {
     $reponse = getDB()->prepare('SELECT * FROM ARTICLE WHERE nom = :nom');
     $reponse->execute([':nom' => $name]);
     $article = $reponse->fetch();
     $reponse->closeCursor(); // Termine le traitement de la requête
     return $article;
+}
+
+function setArticle($id, $nom, $prix, $stock = "", $poid = "", $marque = "", $categorieID = "", $image = "", $description = "") {
+    $article = getArticleById($id);
+    //C'est ici qu'on va faire l'update de l'utilisateur.
+    $reponse = getDB()->prepare('UPDATE ARTICLE SET nom = :nom, prix = :prix, stock = :stock, poid = :poid, marque = :marque, categorieID = :categorieID, image = :image, description = :description WHERE id = :id');
+    $reponse->execute([':id' => $id, ':nom' => $nom, ':prix' => $prix, ':stock' => $stock, ':poid' => $poid, ':marque' => $marque, ':categorieID' => $categorieID, ':image' => $image, ':description' => $description]);
+    $reponse->closeCursor(); // Termine le traitement de la requête
+}
+
+function checkArticleExists($nom){
+    $article = getArticleByName($nom);
+    if(!$article){
+        return true;
+    }
+}
+
+function createArticle($nom, $prix, $stock = "", $poid = "", $marque = "", $categorieID = "", $image = "", $description = "") {
+    $reponse = getDB()->prepare('INSERT INTO ARTICLE SET nom = :nom, prix = :prix, stock = :stock, poid = :poid, marque = :marque, categorieID = :categorieID, image = :image, description = :description');
+    $reponse->execute([':nom' => $nom, ':prix' => $prix, ':stock' => $stock, ':poid' => $poid, ':marque' => $marque, ':categorieID' => $categorieID, ':image' => $image, ':description' => $description]);
+    $reponse->closeCursor(); // Termine le traitement de la requête
 }
 
 function deleteArticle($nom){
@@ -41,10 +70,10 @@ function getAllFromCategories(){
     $reponse->closeCursor(); // Termine le traitement de la requête
     return $categories;
 }
-function getCategorie($nom) {
+function getCategorie($id) {
     $categories = getAllFromCategories();
     foreach($categories as $categorie) {
-        if (strtolower($nom) == strtolower($categorie['nom'])) {
+        if ($id == $categorie['nom']) {
             return $categorie;
         }
     }

@@ -16,7 +16,7 @@ ob_start();
     <tr>
       <th scope="row"><?= $article['id'] ?></th>
       <td><?= $article['nom'] ?></td>
-      <td><?= $article['prix'] ?></td>
+      <td><?= $article['prix'] ?> €</td>
       <td>
           <a href="<?=ROOT_PATH?>article/<?= $article['nom']?>" class="btn btn-primary">Voir<a>
           <a href="<?=ROOT_PATH?>article/<?= $article['nom']?>/edit" class="btn btn-warning">Editer</a>
@@ -48,6 +48,7 @@ ob_start();
       </td>
     </tr>
 <?php endforeach ?>
+<a href="<?=ROOT_PATH?>article_add" class="btn btn-secondary">Ajouter un article<a>
   </tbody>
 </table>
 <?php
