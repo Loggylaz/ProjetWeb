@@ -57,4 +57,8 @@ function deleteUser($login){
     $reponse->closeCursor();
 }
 
+function checkUserRole($id){
+    $user = getUserById($id);
+    return $user['roleID'];
+}
 ?>

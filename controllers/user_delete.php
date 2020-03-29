@@ -22,6 +22,6 @@ else
     include 'views/404.php';
     exit();
 }
-header("Location: ".ROOT_PATH."admin");
+header("Location: ".ROOT_PATH."admin_user");
 exit();
 ?>

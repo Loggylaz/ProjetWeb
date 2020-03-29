@@ -2,9 +2,9 @@
 
 require 'models/users.php';
 
-if(empty($_SESSION['id'])){
-    header("Location: ".ROOT_PATH);
-    exit();
+if(empty($_SESSION['id']) || checkUserRole($_SESSION['id']) != 1){
+        header("Location: ".ROOT_PATH);
+        exit();
 }
 $users = getAllFromUser();
 

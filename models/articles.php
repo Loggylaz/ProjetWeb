@@ -21,6 +21,20 @@ function getArticle($nom) {
     }
 }
 
+function getArticleByName($name) {
+    $reponse = getDB()->prepare('SELECT * FROM ARTICLE WHERE nom = :nom');
+    $reponse->execute([':nom' => $name]);
+    $article = $reponse->fetch();
+    $reponse->closeCursor(); // Termine le traitement de la requête
+    return $article;
+}
+
+function deleteArticle($nom){
+    $reponse = getDB()->prepare("DELETE FROM ARTICLE WHERE nom = :nom");
+    $reponse->execute([':nom' => $nom]);
+    $reponse->closeCursor();
+}
+
 function getAllFromCategories(){
     $reponse = getDB()->query('SELECT * FROM CATEGORIE');
     $categories = $reponse->fetchAll();

@@ -34,9 +34,9 @@ require_once 'models/users.php';
                             $user = getUserByID($_SESSION['id']);
                             if ($user['roleID'] == 1):
                     ?>
-                        <li class="nav-item active"><a class="nav-link" href="<?=ROOT_PATH?>admin_user">Administration Utilisateurs</a></li>
+                        <li class="nav-item active"><a class="nav-link" href="<?=ROOT_PATH?>admin_user">Administration utilisateurs</a></li>
                             <?php elseif($user['roleID'] == 2):?>
-                        <li class="nav-item active"><a class="nav-link" href="<?=ROOT_PATH?>admin_article">Administration Articles</a></li>
+                        <li class="nav-item active"><a class="nav-link" href="<?=ROOT_PATH?>admin_article">Administration articles</a></li>
                             <?php endif; }?>
                 </ul>
                 <?php if(empty($_SESSION['id'])):?>
