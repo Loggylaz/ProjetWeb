@@ -2,7 +2,7 @@
 session_start(); // On démarre toujours la session
 define('BDD_LOGIN', "root");
 define('BDD_PASS', "");
-define('ROOT_PATH', "/MvcProf/"); // Chemin qui suit le nom de domaine. Exemple: http://monprojet.local/09_mvc/ le path a indiqué sera donc '/09_mvc/'
+define('ROOT_PATH', "/ProjetSuperette/"); // Chemin qui suit le nom de domaine. Exemple: http://monprojet.local/09_mvc/ le path a indiqué sera donc '/09_mvc/'
 $request = str_replace(ROOT_PATH, "", $_SERVER['REQUEST_URI']); // On récupère juste la request, sans le chemin du dossier.
 $request = parse_url($request, PHP_URL_PATH);
 $segments = array_filter(explode('/', $request)); // On découpe la requête pour obtenir une liste et on supprime les éléments Null
