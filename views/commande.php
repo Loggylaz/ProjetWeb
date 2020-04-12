@@ -1,7 +1,7 @@
 <?php 
 ob_start();
 ?>
-<h3>Panier</h3>
+<h3>Merci !!</h3>
 <table class="table">
   <thead>
     <tr>
@@ -19,7 +19,6 @@ ob_start();
       <td><img src="<?= ROOT_PATH.$article['image']?>" width="100px" height="100px"></td>
       <td>
             <a href="<?=ROOT_PATH?>article/<?= $article['nom']?>" class="btn btn-primary">Voir</a>
-            <a href="<?= ROOT_PATH ?>panier/<?= $article['id']?>/delete" class="btn btn-danger">Supprimer</a>
             
       </td>
     </tr>
@@ -27,11 +26,8 @@ ob_start();
   </tbody>
   <td>Total = <?=$total?> €</td>
 </table>
-<?php if(!empty($_SESSION['panier'])):?>
-        <a href="<?=ROOT_PATH?>commande" class="btn btn-warning">Passer Commande</a>
-        <?php endif?>
 <?php
-$title = "Panier";
+$title = "Commande effectuée !";
 $content = ob_get_clean();
 include('includes/template.php');
 ?>

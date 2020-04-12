@@ -23,6 +23,7 @@ if(!empty($_POST)) {
             //Authentification OK
             $_SESSION['id'] = $user['id'];
             $_SESSION['message'] = "Bienvenue ".$user['login'];
+            $_SESSION['panier'] = array();
             header("Location: ".ROOT_PATH);
             exit();
         }
