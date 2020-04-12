@@ -7,7 +7,7 @@
           </div>
           <div class="card-body">
               <h5 class="card-title"><?=$article['prix']?></h5>
-              <p class="card-text"><?=$article['marque']?></p>
+              <p class="card-text"><?=$article['description']?></p>
               <a href="<?=ROOT_PATH.'article/'.$article['nom']?>" class="btn btn-primary">Voir le détail</a>
           </div>
         </div>

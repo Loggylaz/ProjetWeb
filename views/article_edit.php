@@ -1,7 +1,7 @@
 <?php
 ob_start()
 ?>
-<form method="POST">
+<form enctype="multipart/form-data" method="POST">
     <div class="form-group">
         <label for="idid">Identifiant</label>
         <input type="text" class="form-control" id="idid" name="id" value="<?= $article['id']?>" readonly>
@@ -30,15 +30,20 @@ ob_start()
         <label for="idcategorieID">Catégorie</label>
         <input type="number" class="form-control" id="idcategorieID" name="categorieID" value="<?= $article['categorieID']?>">
     </div>
-    <div class="form-group">
-        <label for="idimage">Image</label>
-        <input type="text" class="form-control" id="idimage" name="image" value="<?= $article['image']?>">
-    </div>
+    <div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text">Image</span>
+  </div>
+  <div class="custom-file">
+    <input type="file" class="custom-file-input" id="inputGroupFile01" name="image">
+    <label class="custom-file-label" for="inputGroupFile01"><?= $article['image'] ?></label>
+  </div>
+</div>
     <div class="form-group">
         <label for="iddescription">Description</label>
         <input type="text" class="form-control" id="iddescription" name="description" value="<?= $article['description']?>">
     </div>
-    <button type="submit" class="btn btn-primary">Editer</button>
+    <button type="submit" value="submit" class="btn btn-primary">Editer</button>
 </form>
 <?php
 $title = "Editer";

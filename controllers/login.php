@@ -17,26 +17,19 @@ if(!empty($_SESSION['id'])){
 if(!empty($_POST)) {
     if(!empty($_POST['login']) && !empty($_POST['mdp']))
     {
-        if(checkUserExists($_POST['login']) != true)
+        $user = isValidUser($_POST['login'], $_POST['mdp']);
+        if($user)
         {
-            $user = isValidUser($_POST['login'], $_POST['mdp']);
-            if($user)
-            {
-                //Authentification OK
-                $_SESSION['id'] = $user['id'];
-                $_SESSION['message'] = "Bienvenue ".$user['login'];
-                header("Location: ".ROOT_PATH);
-                exit();
-            }
-            else
-            {
-                //Authentification NOK
-                $_SESSION['error'] = "Mauvais login/password";
-            }
+            //Authentification OK
+            $_SESSION['id'] = $user['id'];
+            $_SESSION['message'] = "Bienvenue ".$user['login'];
+            header("Location: ".ROOT_PATH);
+            exit();
         }
         else
         {
-            $_SESSION['error'] = "Le login ".$_POST['login']." n'existe pas";
+            //Authentification NOK
+            $_SESSION['error'] = "Mauvais login/password";
         }
     }
     else

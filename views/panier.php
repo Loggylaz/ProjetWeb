@@ -1,30 +1,24 @@
 <?php 
 ob_start();
 ?>
-<h3>Liste des articles</h3>
+<h3>Panier</h3>
 <table class="table">
   <thead>
     <tr>
-      <th scope="col">Identifiant</th>
+      <th scope="col">Id</th>
       <th scope="col">Nom</th>
       <th scope="col">Prix</th>
-      <th scope="col">Action</th>
     </tr>
   </thead>
   <tbody>
-<?php foreach($articles as $article):
-
-  
-  ?>
+<?php foreach($articles as $article):  ?>
     <tr>
       <th scope="row"><?= $article['id'] ?></th>
       <td><?= $article['nom'] ?></td>
-      <td><?= $article['prix'] ?> €</td>
+      <td><?= $article['prix'] ?></td>
       <td><img src="<?= ROOT_PATH.$article['image']?>" width="100px" height="100px"></td>
       <td>
-          <a href="<?=ROOT_PATH?>article/<?= $article['nom']?>" class="btn btn-primary">Voir<a>
-          <a href="<?=ROOT_PATH?>article/<?= $article['nom']?>/edit" class="btn btn-warning">Editer</a>
-            <!-- Button trigger modal -->
+            <a href="<?=ROOT_PATH?>article/<?= $article['nom']?>" class="btn btn-primary">Voir<a>
             <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal<?= $article['id']?>">
               Supprimer
             </button>
@@ -40,7 +34,7 @@ ob_start();
                     </button>
                   </div>
                   <div class="modal-body">
-                      Voulez-vous vraiment supprimer l'article <?= $article['nom']?> ?
+                      Voulez-vous vraiment supprimer l'article <?= $article['nom']?> de votre panier ?
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
@@ -52,11 +46,10 @@ ob_start();
       </td>
     </tr>
 <?php endforeach ?>
-<a href="<?=ROOT_PATH?>article_add" class="btn btn-secondary">Ajouter un article<a>
   </tbody>
 </table>
 <?php
-$title = "Administration";
+$title = "Panier";
 $content = ob_get_clean();
 include('includes/template.php');
 ?>

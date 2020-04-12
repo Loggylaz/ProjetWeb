@@ -1,4 +1,4 @@
-<?php
+mdp<?php
 require 'models/users.php';
 if(empty($_SESSION['id'])){
     header("Location: ".ROOT_PATH);
@@ -25,16 +25,11 @@ if (!empty($_POST) && !empty($_POST['login']) && !empty($_POST['email'])){
     }
     else
     {
-        setUser($user['id'], $_POST['login'], $_POST['email'], $_POST['mdp'], $_POST['rue'], $_POST['numero'], $_POST['cp'], $_POST['localite'], $_POST['pays']);
+        setUser($user['id'], $_POST['login'], $_POST['email'], $_POST['mdp']);
         $_SESSION['message'] = 'L\'utilisateur '.$user['login'].' a bien été mis à jour';
         header("Location: ".ROOT_PATH);
         exit();
     }
 }
-else if(!empty($_POST['login']) || !empty($_POST['email'])){
-    $_SESSION['error'] = "Login et Email ne peuvent pas être vide !";
-}
-
-
 include 'views/user_edit.php';
 ?>

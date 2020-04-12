@@ -1,28 +1,41 @@
 <?php
-require_once 'models/db.php';
 // La variable data est une liste contenant l'ensemble des données. 1 élément = 1 donnée.
 // A terme, les données seront récupérées depuis une db et injectées dans des objets php
-function getAllFromArticles()
-{
-    $reponse = getDB()->query('SELECT * FROM ARTICLE');
-    $articles = $reponse->fetchAll();
-    $reponse->closeCursor(); // Termine le traitement de la requête
-    return $articles;
-}
+$data = [
+    ['nom' => 'Pomme',
+    'prix' => 1.2,
+    'description' => 'Granny-Smith',
+    'origine' => 'Australie',
+    ],
+    ['nom' => 'Poire',
+    'prix' => 1.25,
+    'description' => 'Williams',
+    'origine' => 'USA',
+    ],
+    ['nom' => 'Peche',
+    'prix' => 0.95,
+    'description' => 'Classique',
+    'origine' => 'Italie',
+    ],
+];
 
 // La fonction getArticles retourne l'ensemble des données.
+function getArticles() {
+    global $data; // portée globale afin de disposer de la liste. Sans le mot clé global, la variable data sera locale et donc null
+    return $data;
+}
 
-
-function getArticle($nom)
-{
-    $articles = getAllFromArticles();
-    foreach ($articles as $article) {
+function getArticle($nom) {
+    $articles = getArticles();
+    foreach($articles as $article) {
         if (strtolower($nom) == strtolower($article['nom'])) {
             return $article;
         }
     }
 }
 
+<<<<<<< Updated upstream
+=======
 function getArticleById($id)
 {
     $reponse = getDB()->prepare('SELECT * FROM ARTICLE WHERE id = :id');
@@ -49,20 +62,18 @@ function setArticle($id, $nom, $prix, $stock = "", $poid = "", $marque = "", $ca
     $reponse->execute([':id' => $id, ':nom' => $nom, ':prix' => $prix, ':stock' => $stock, ':poid' => $poid, ':marque' => $marque, ':categorieID' => $categorieID, ':image' => $image, ':description' => $description]);
     $reponse->closeCursor(); // Termine le traitement de la requête
 }
+>>>>>>> Stashed changes
 
-function checkArticleExists($nom)
-{
-    $article = getArticleByName($nom);
-    if (!$article) {
-        return true;
-    }
-}
 
+<<<<<<< Updated upstream
+?>
+=======
 function createArticle($nom, $prix, $stock = "", $poid = "", $marque = "", $categorieID = "", $image = "", $description = "")
 {
     $reponse = getDB()->prepare('INSERT INTO ARTICLE SET nom = :nom, prix = :prix, stock = :stock, poid = :poid, marque = :marque, categorieID = :categorieID, image = :image, description = :description');
     $reponse->execute([':nom' => $nom, ':prix' => $prix, ':stock' => $stock, ':poid' => $poid, ':marque' => $marque, ':categorieID' => $categorieID, ':image' => $image, ':description' => $description]);
     $reponse->closeCursor(); // Termine le traitement de la requête
+    
 }
 
 function deleteArticle($nom)
@@ -96,3 +107,4 @@ function getArticleCategorie($id)
     $reponse->closeCursor(); // Termine le traitement de la requête
     return $article;
 }
+>>>>>>> Stashed changes

@@ -1,27 +1,38 @@
 <?php
 ob_start()
 ?>
-<form method="POST">
-    <div class="form-group">
-        <label for="idnom">Nom</label>
-        <input type="text" class="form-control" id="idnom" name="nom">
-    </div>
-    <div class="form-group">
-        <label for="idprix">Prix</label>
-        <input type="number" min="0.00" max="10000.00" step="0.01" class="form-control" id="idprix" name="prix">
-    </div>
-    <div class="form-group">
-        <label for="idstock">Stock</label>
-        <input type="number" class="form-control" id="idstock" name="stock">
-    </div>
-    <div class="form-group">
-        <label for="idpoid">Poid</label>
-        <input type="text" class="form-control" id="idpoid" name="poid">
-    </div>
-    <div class="form-group">
-        <label for="idmarque">Marque</label>
-        <input type="text" class="form-control" id="idmarque" name="marque">
-    </div>
+<form enctype="multipart/form-data" method="POST">
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="basic-addon1">Nom</span>
+  </div>
+  <input type="text" class="form-control" placeholder="Nom" aria-label="name" aria-describedby="basic-addon1" name="nom">
+</div>
+<div class="input-group mb-3">
+<input type="text" min="0.00" max="10000.00" set="0.1" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="0,00" name="prix">
+  <div class="input-group-prepend">
+    <span class="input-group-text">€</span>
+  </div>
+</div>
+
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="basic-addon1">Stock</span>
+  </div>
+  <input type="number" class="form-control" placeholder="Stock" aria-label="stock" aria-describedby="basic-addon1" name="stock">
+</div>
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="basic-addon1">Poid</span>
+  </div>
+  <input type="text" class="form-control" placeholder="Poid" aria-label="poid" aria-describedby="basic-addon1" name="poid">
+</div>
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="basic-addon1">Marque</span>
+  </div>
+  <input type="text" class="form-control" placeholder="Marque/Variété" aria-label="marque" aria-describedby="basic-addon1" name="marque">
+</div>
 
     <div class="input-group mb-3">
         <div class="input-group-prepend">
@@ -33,15 +44,23 @@ ob_start()
             <?php endforeach?>
         </select>
     </div>
-    <div class="form-group">
-        <label for="idimage">Image</label>
-        <input type="text" class="form-control" id="idimage" name="image">
-    </div>
-    <div class="form-group">
-        <label for="iddescription">Description</label>
-        <input type="text" class="form-control" id="iddescription" name="description">
-    </div>
-    <button type="submit" class="btn btn-primary">Ajouter un article</button>
+    <div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text">Image</span>
+  </div>
+  <div class="custom-file">
+    <input type="file" class="custom-file-input" id="inputGroupFile01" name="image">
+    <label class="custom-file-label" for="inputGroupFile01">Choisir un fichier</label>
+  </div>
+</div>
+<div class="input-group">
+  <div class="input-group-prepend">
+    <span class="input-group-text">Description</span>
+  </div>
+  <textarea class="form-control" aria-label="With textarea" placeholder="Description" name="description"></textarea>
+</div>
+<br>
+    <button type="submit" value="submit" class="btn btn-primary">Ajouter un article</button>
 </form>
 <?php
 $title = "Ajouter un article";
