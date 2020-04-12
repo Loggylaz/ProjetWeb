@@ -18,9 +18,15 @@
 
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item"><a class="nav-link" href="<?=ROOT_PATH?>article">Les articles</a></li>
+                    <li class="nav-item active"><a class="nav-link" href="<?=ROOT_PATH?>article">Les articles</a></li>
+                    <?php if(!empty($_SESSION) && $_SESSION['role'] == 1):?>
+                    <li class="nav-item active"><a class="nav-link" href="<?=ROOT_PATH?>admin_user">Administration Utilisateurs</a></li>
+                    <?php endif?>
+                    <?php if(!empty($_SESSION) && $_SESSION['role'] == 2):?>
+                    <li class="nav-item active"><a class="nav-link" href="<?=ROOT_PATH?>admin_article">Administration Articles</a></li>
+                    <?php endif?>
                 </ul>
-                <?php if(empty($_SESSION['id'])):?>
+                <?php if(empty($_SESSION)):?>
                     <a href="<?=ROOT_PATH?>login" class="btn btn-outline-success my-2 my-sm-0">Se connecter</a>
                     <a href="<?=ROOT_PATH?>signup" class="btn btn-outline-success my-2 my-sm-0">Créer un compte</a>
                 <?php else:?>

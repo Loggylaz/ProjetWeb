@@ -17,7 +17,18 @@ Login: <?= $user['login']?>
 <br>
 Email: <?= $user['email']?>
 <br>
+Rue : <?= $user['rue']?>
+<br>
+Numéro : <?= $user['numero']?>
+<br>
+Code postal : <?= $user['cp']?>
+<br>
+Localité : <?= $user['localite']?>
+<br>
+Pays : <?= $user['pays']?>
+<br>
 <a href="<?=ROOT_PATH?>user/<?= $user['login']?>/edit" class="btn btn-warning">Editer</a>
+<a href="<?=ROOT_PATH?>user/<?= $user['login']?>/commandes" class="btn btn-warning">Mes commandes</a>
 <?php
 $content = ob_get_clean();
 include 'includes/template.php';

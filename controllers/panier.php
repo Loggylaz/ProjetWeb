@@ -10,6 +10,8 @@ if(empty($_SESSION['id'])){
 
 $articles=array();
 $total= 0;
+$quantite = 0;
+$i=0;
 // $_SESSION['panier'] = [1,5,9];
 
 // array_push($_SESSION['panier'], 1);
@@ -18,7 +20,26 @@ $total= 0;
 
 foreach($_SESSION['panier'] as $articlePanier){
     array_push($articles, getArticleById($articlePanier));
+    array_push($articles, $quantite);
+    foreach($articles as $article){
+        $quantite = array_search($article['id'], array_column($articles, 'id'));
+        
+    }
 }
+
+
+foreach ($articles as $item) {
+  if ($item['id'] === 5) {
+    $quantite++;
+  }
+}
+
+// foreach($articles as $article){
+//     foreach($article['id'] == $article['id'] as $articleQuantite){
+//         $quantite++;
+//         array_push($articles, $quantite);
+//     }
+// }
 
 foreach($articles as $article){
     $total += $article["prix"];

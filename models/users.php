@@ -40,8 +40,8 @@ function checkUserExists($login){
 }
 
 function createUser($login, $mdp, $email, $nom, $prenom) {
-    $reponse = getDB()->prepare('INSERT INTO UTILISATEUR SET login = :login, mdp = :mdp, email = :email, nom = :nom, prenom = :prenom, role_id = :role_id');
-    $reponse->execute([':login' => $login, ':mdp' => password_hash($mdp, PASSWORD_DEFAULT), ':email' => $email, ':nom' => $nom, ':prenom' => $prenom, ':role_id' => 3]);
+    $reponse = getDB()->prepare('INSERT INTO UTILISATEUR SET login = :login, mdp = :mdp, email = :email, nom = :nom, prenom = :prenom, role_id = :roleID');
+    $reponse->execute([':login' => $login, ':mdp' => password_hash($mdp, PASSWORD_DEFAULT), ':email' => $email, ':nom' => $nom, ':prenom' => $prenom, ':roleID' => 3]);
     $reponse->closeCursor(); // Termine le traitement de la requête
 }
 
@@ -61,6 +61,6 @@ function deleteUser($login){
 
 function checkUserRole($id){
     $reponse = getUserById($id);
-    return $reponse['role_id'];
+    return $reponse['roleID'];
 }
 ?>

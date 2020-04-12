@@ -16,6 +16,8 @@ if(!empty($_POST)) {
             $user = createUser($_POST['login'], $_POST['mdp'], $_POST['email'], $_POST['nom'], $_POST['prenom']);
             $user = getUserByLogin($_POST['login']);
             $_SESSION['id'] = $user['id'];
+            $_SESSION['panier'] = array();
+            $_SESSION['role'] = $user['roleID'];
             $_SESSION['message'] = "Bienvenue ".$_POST['login'];
             header('Location: '.ROOT_PATH);
             exit();

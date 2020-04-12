@@ -24,6 +24,7 @@ if(!empty($_POST)) {
             $_SESSION['id'] = $user['id'];
             $_SESSION['message'] = "Bienvenue ".$user['login'];
             $_SESSION['panier'] = array();
+            $_SESSION['role'] = $user['roleID'];
             header("Location: ".ROOT_PATH);
             exit();
         }
