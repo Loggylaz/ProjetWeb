@@ -8,6 +8,7 @@ if(empty($_SESSION['id'])){
     exit();
 }
 
+$date = getdate();
 
 if(REQ_TYPE_ID){
     $commandes = getAllBooksByUserId($_SESSION['id']);
@@ -16,18 +17,23 @@ if(REQ_TYPE_ID){
         $_SESSION['error'] = "Vous n'avez pas encore de commande";
         exit();
     }else{
-    $commande_articles=array();
     $articles=array();
-    foreach($commandes as $commande){
-        $total=0;
-        $commande_articlesTemp = getAllBooksArticlesByCommandeID($commande['id']);
 
+    foreach($commandes as $commande){
+        $commande_articlesTemp = getAllBooksArticlesByCommandeID($commande['id']);
+        foreach($commande_articlesTemp as $commande_article){
+            array_push($articles, getEverythingBookedByUserId($_SESSION['id'], $commande_article['id'], $commande_article['articleID']));
+        }
 }
-foreach($commande_articlesTemp as $commande_article){
-    array_push($articles, getArticleById($commande_article["articleID"]));
-    array_push($commande_articles, $commande_article);
-        $total += $commande_article["prix"];
-}
+
+// $array_merged[$commande['id']] = $commande_article;
+// $i = 0;
+// foreach($articles as $article){
+//     $i++;
+//     if(in_array($i, $article)){
+//         $mdr = $articles[$i];
+//     }
+// }
 }
 } 
 else {

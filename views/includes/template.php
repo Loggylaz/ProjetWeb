@@ -7,6 +7,8 @@
         <script src="<?=ROOT_PATH?>public/js/jquery-3.4.1.slim.min.js"></script>
         <script src="<?=ROOT_PATH?>public/js/popper.min.js"></script>
         <script src="<?=ROOT_PATH?>public/js/bootstrap.min.js"></script>
+        <script src="<?=ROOT_PATH?>public/js/canvasjs.min.js"></script>
+        <script src="<?=ROOT_PATH?>public/js/canvasjs.react.js"></script>
         <title><?php echo $title; ?></title>
     </head>
     <body>
@@ -24,6 +26,9 @@
                     <?php endif?>
                     <?php if(!empty($_SESSION) && $_SESSION['role'] == 2):?>
                     <li class="nav-item active"><a class="nav-link" href="<?=ROOT_PATH?>admin_article">Administration Articles</a></li>
+                    <?php endif?>
+                    <?php if(!empty($_SESSION) && $_SESSION['role'] <= 2):?>
+                    <li class="nav-item active"><a class="nav-link" href="<?=ROOT_PATH?>admin_stats">Statistiques</a></li>
                     <?php endif?>
                 </ul>
                 <?php if(empty($_SESSION)):?>

@@ -8,7 +8,7 @@ ob_start()
     </div>
     <div class="form-group">
         <label for="idlogin">Login</label>
-        <input type="text" class="form-control" id="idlogin" name="login" value="<?= $user['login']?>">
+        <input type="text" maxlength="12" placeholder="Pas de caractères spéciaux ni d'espace" pattern="[^()/><\][\\\x22,;|+]" class="form-control" id="idlogin" name="login" value="<?= $user['login']?>">
     </div>
     <div class="form-group">
         <label for="idemail">Email</label>

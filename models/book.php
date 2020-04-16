@@ -18,10 +18,11 @@ function getAllBooksArticlesByCommandeID($bookId){
     return $booksArticles;
 }
 
-function createCommande($id)
+function createCommande($id, $total)
 {
-    $reponse = getDB()->prepare('INSERT INTO COMMANDE SET utilisateurID = :utilisateurID, statutID = :statutID');
-    $reponse->execute([':utilisateurID' => $id, 'statutID' => 1]);
+    $date = date("Y-m-d H:i:s");
+    $reponse = getDB()->prepare('INSERT INTO COMMANDE SET utilisateurID = :utilisateurID, statutID = :statutID, total = :total, date = :date');
+    $reponse->execute([':utilisateurID' => $id, 'statutID' => 1, ':total' => $total, ':date' => $date]);
     $reponse->closeCursor();
 }
 
@@ -39,5 +40,27 @@ function createCommandeArticle($commandeID, $articleID, $prix){
     $reponse->execute([':commandeID' => $commandeID, ':articleID' => $articleID, ':prix' => $prix]);
     $reponse->closeCursor();
 }
+
+function getEverythingBookedByUserId($userID, $caID, $articleID){
+    $reponse = getDB()-> prepare('SELECT a.id AS articleID, a.nom AS articleNom, a.image AS articleImage, a.description AS articleDescription, ca.id AS commandeArticleID, ca.commandeID AS commandeID, ca.prix AS prix, c.utilisateurID AS userID, c.statutID AS statut, c.total AS total
+        FROM article AS a
+        JOIN commande_article AS ca
+        ON a.id = ca.articleID
+        JOIN commande AS c
+        ON ca.commandeID = c.id
+        WHERE c.utilisateurID = :userID AND ca.id = :caID AND a.id = :articleID');
+    $reponse->execute([':userID' => $userID, ':caID' => $caID, ':articleID' => $articleID]);
+    $articleEverything = $reponse->fetch();
+    $reponse->closeCursor();
+    return $articleEverything;
+}
+
+// SELECT a.id AS articleID, a.nom AS articleNom, a.image AS articleImage, a.description AS articleDescription, ca.commandeID AS commandeID, ca.prix AS prix, c.utilisateurID AS userID, c.statutID AS statut, c.total AS total
+// FROM article AS a
+// JOIN commande_article AS ca
+// ON a.id = ca.articleID
+// JOIN commande AS c
+// ON ca.commandeID = c.id
+// WHERE c.utilisateurID = 2
 
 ?>

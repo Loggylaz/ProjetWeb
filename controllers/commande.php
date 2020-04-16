@@ -12,15 +12,20 @@ $total = 0;
 
 if(!empty($_SESSION["panier"])){
 
-    createCommande($_SESSION['id']);
-    $commandeID = getLastIdInserted($_SESSION['id']);
+
     foreach($_SESSION['panier'] as $book){
         array_push($articles, getArticleById($book));
     }
 
     foreach($articles as $article){
+        $total += $article['prix'];
+    }
+
+    createCommande($_SESSION['id'], $total);
+    $commandeID = getLastIdInserted($_SESSION['id']);
+
+    foreach($articles as $article){
         createCommandeArticle($commandeID, $article['id'], $article['prix']);
-        $total += $article["prix"];
     }
 
     unset($_SESSION['panier']);

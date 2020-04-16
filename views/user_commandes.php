@@ -1,40 +1,34 @@
 <?php
-print_r($commande_articles);
 ob_start();
 ?>
 <h3>Mes Commandes</h3>
 <table class="table">
   <thead>
     <tr>
-      <th scope="col">Id</th>
       <th scope="col">Nom</th>
       <th scope="col">Prix</th>
     </tr>
   </thead>
   <tbody>
-  <pre>
-<?php
-print_r ($commande);
-?>
-</pre>
-<?php foreach($commandes as $commande): ?>
+  <?php foreach($commandes as $commande): ?>
+
 <?php foreach($articles as $article):  ?>
+  <?php if($article['commandeID'] == $commande['id']): ?>
     <tr>
-      <th scope="row"><?= $article['id'] ?></th>
-      <td><?= $article['nom'] ?></td>
+      <td><?= $article['articleNom'] ?></td>
       <td><?= $article['prix'] ?></td>
-      <td><img src="<?= ROOT_PATH.$article['image']?>" width="100px" height="100px"></td>
+      <td><img src="<?= ROOT_PATH.$article['articleImage']?>" width="100px" height="100px"></td>
       <td>
-            <a href="<?=ROOT_PATH?>article/<?= $article['nom']?>" class="btn btn-primary">Voir</a>
+            <a href="<?=ROOT_PATH?>article/<?= $article['articleNom']?>" class="btn btn-primary">Voir</a>
             
       </td>
 
     </tr>
+  <?php endif ?>
+  <?php endforeach ?>
+  <th>Date de commande: <?= $commande['date']?></th>
+      <th>Total = <?=$commande['total']?> €</th>
 
-<?php endforeach ?>
-
-      <th>Total = <?=$total?> €</th>
-      <hr>
 <?php endforeach ?>
 
   </tbody>

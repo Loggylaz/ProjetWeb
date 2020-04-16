@@ -5,6 +5,7 @@ ob_start();
 <table class="table">
   <thead>
     <tr>
+      <th scope="col">Date</th>
       <th scope="col">Id</th>
       <th scope="col">Nom</th>
       <th scope="col">Prix</th>
@@ -14,6 +15,7 @@ ob_start();
 <?php foreach($articles as $article):  ?>
     <tr>
       <th scope="row"><?= $article['id'] ?></th>
+      <td><?php date('Y-m-d')?></td>
       <td><?= $article['nom'] ?></td>
       <td><?= $article['prix'] ?></td>
       <td><img src="<?= ROOT_PATH.$article['image']?>" width="100px" height="100px"></td>
