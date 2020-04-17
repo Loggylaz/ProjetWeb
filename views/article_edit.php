@@ -30,15 +30,10 @@ ob_start()
         <label for="idcategorieID">Catégorie</label>
         <input type="number" class="form-control" id="idcategorieID" name="categorieID" value="<?= $article['categorieID']?>">
     </div>
-    <div class="input-group mb-3">
-  <div class="input-group-prepend">
-    <span class="input-group-text">Image</span>
+  <div class="form-group">
+    <label for="exampleFormControlFile1">Image</label>
+    <input type="file" class="form-control-file" id="exampleFormControlFile1" name='image'>
   </div>
-  <div class="custom-file">
-    <input type="file" class="custom-file-input" id="inputGroupFile01" name="image">
-    <label class="custom-file-label" for="inputGroupFile01"><?= $article['image'] ?></label>
-  </div>
-</div>
     <div class="form-group">
         <label for="iddescription">Description</label>
         <input type="text" class="form-control" id="iddescription" name="description" value="<?= $article['description']?>">

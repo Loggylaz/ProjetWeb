@@ -8,7 +8,7 @@ ob_start();
       <th scope="col">Identifiant</th>
       <th scope="col">Nom</th>
       <th scope="col">Prix</th>
-      <th scope="col">Action</th>
+      <th scope="col">Image</th>
     </tr>
   </thead>
   <tbody>
@@ -23,7 +23,7 @@ ob_start();
       <td><img src="<?= ROOT_PATH.$article['image']?>" width="100px" height="100px"></td>
       <td>
           <a href="<?=ROOT_PATH?>article/<?= $article['nom']?>" class="btn btn-primary">Voir<a>
-          <a href="<?=ROOT_PATH?>article/<?= $article['nom']?>/edit" class="btn btn-warning">Editer</a>
+          <a href="<?=ROOT_PATH?>article/<?= $article['id']?>/edit" class="btn btn-warning">Editer</a>
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal<?= $article['id']?>">
               Supprimer

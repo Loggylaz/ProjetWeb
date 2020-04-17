@@ -63,10 +63,10 @@ function getAllFromCategories()
     return $categories;
 }
 
-function deleteArticle($nom)
+function deleteArticle($id)
 {
-    $reponse = getDB()->prepare("DELETE FROM ARTICLE WHERE nom = :nom");
-    $reponse->execute([':nom' => $nom]);
+    $reponse = getDB()->prepare("DELETE FROM ARTICLE WHERE id = :id");
+    $reponse->execute([':id' => $id]);
     $reponse->closeCursor();
 }
 

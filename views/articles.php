@@ -1,77 +1,46 @@
-<?php 
+<?php
 ob_start();
 ?>
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Identifiant</th>
-      <th scope="col">Nom</th>
-      <th scope="col">Prix</th>
-      <th scope="col">Image</th>
-      <th scope="col">Action</th>
-    </tr>
-  </thead>
-  <tbody>
-<?php foreach($articles as $article):?>
-    <tr>
-      <th scope="row"><?= $article['id'] ?></th>
-      <td><?= $article['nom'] ?></td>
-      <td><?= $article['prix'] ?> €</td>
-      <td><img src="<?= ROOT_PATH.$article['image'] ?>"width="100px" height="100px"></td>
-      <td>
-        <a href="<?=ROOT_PATH?>article/<?= $article['nom']?>" class="btn btn-primary">Détails<a>
-        <?php if($_SESSION):?>
-        <a href="<?=ROOT_PATH?>panier/<?= $article['id']?>/add" class="btn btn-warning">Ajouter au panier</a>
-        <?php endif?>
-      </td>
-    </tr>
-<?php endforeach ?>
-  </tbody>
-</table>
-
-<h2>Card-deck :</h2>
-            <div class="card-deck">
-                <div class="card">
-                    <div class="card-header"><?= $article['nom']." ".$article['prix'] ?> € </div>
-                    <div class="card-body">
-                        <h3 class="card-title"><img src="<?= ROOT_PATH.$article['image'] ?>"width="100px" height="100px"></h5>
-                        <p class="card-text">Une ligne de texte dans notre première carte.</p>
-                        <p class="card-text"><small class="text-muted"><a href="<?=ROOT_PATH?>article/<?= $article['nom']?>" class="btn btn-primary">Détails<a></p>
-                    </div>
-                    <div class="card-footer"><a href="<?=ROOT_PATH?>panier/<?= $article['id']?>/add" class="btn btn-warning">Ajouter au panier</a></div>
-                </div>
-                <div class="card">
-                    <div class="card-header">En-tête de la seconde carte</div>
-                    <div class="card-body">
-                        <h3 class="card-title">Titre de la seconde carte</h5>
-                        <p class="card-text">Une ligne de texte dans notre seconde carte.</p>
-                    </div>
-                    <div class="card-footer">Pied de la seconde carte</div>
-                </div>
-            </div>
-            <div class="card-deck">
-                <div class="card">
-                    <div class="card-header"><?= $article['nom']." ".$article['prix'] ?> € </div>
-                    <div class="card-body">
-                        <h3 class="card-title"><img src="<?= ROOT_PATH.$article['image'] ?>"width="100px" height="100px"></h5>
-                        <p class="card-text">Une ligne de texte dans notre première carte.</p>
-                        <p class="card-text"><small class="text-muted"><a href="<?=ROOT_PATH?>article/<?= $article['nom']?>" class="btn btn-primary">Détails<a></p>
-                    </div>
-                    <div class="card-footer"><a href="<?=ROOT_PATH?>panier/<?= $article['id']?>/add" class="btn btn-warning">Ajouter au panier</a></div>
-                </div>
-                <div class="card">
-                    <div class="card-header">En-tête de la seconde carte</div>
-                    <div class="card-body">
-                        <h3 class="card-title">Titre de la seconde carte</h5>
-                        <p class="card-text">Une ligne de texte dans notre seconde carte.</p>
-                    </div>
-                    <div class="card-footer">Pied de la seconde carte</div>
-                </div>
-            </div>
+<pre>
+  <?=print_r($_SESSION['panier'])?>
+</pre>
+<div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+  <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</a>
+  <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Profile</a>
+  <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Messages</a>
+  <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Settings</a>
+</div>
+<br>
+<div class="card-deck">
+  <div class="row">
+    <?php foreach ($articles as $article) : ?>
+      <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
+        <div class="card" style="width: 20rem;">
+          <img class="card-img-top" src="<?= ROOT_PATH . $article['image'] ?>" width="325" height="225" alt="Card image cap">
+          <div class="card-body">
+            <h3 class="card-title"><?= $article['nom'] ?></h3>
+            <h5 class="card-subtitle"><?= $article['prix'] ?> €</h5>
+            <a href="<?= ROOT_PATH ?>article/<?= $article['nom'] ?>" class="btn btn-primary">Détails<a>
+            
+          </div>
+          <div class="card-footer">
+          <?php if ($_SESSION) : ?>
+            <form id="articleIn" action="<?= ROOT_PATH ?>panier/<?= $article['id'] ?>/add" method="POST">
+              <label for="quantity">Quantité:</label>
+              <input type="number" id="quantity" name="quantity" value="0" min="0" max="100">
+              <button type="submit" value="submit" class="btn btn-warning">Ajouter au panier</button>
+            </form>
+            <?php endif ?>
+          </div>
+        </div>
+        <br>
+      </div>
+    <?php endforeach ?>
+  </div>
+  <br>
+</div>
 <?php
 $title = "Articles";
 $content = ob_get_clean();
 include('includes/template.php');
 ?>
-
-            

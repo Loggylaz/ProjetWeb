@@ -44,16 +44,11 @@ ob_start()
             <?php endforeach?>
         </select>
     </div>
-    <div class="input-group mb-3">
-  <div class="input-group-prepend">
-    <span class="input-group-text">Image</span>
+  <div class="form-group">
+    <label for="exampleFormControlFile1">Image</label>
+    <input type="file" class="form-control-file" id="exampleFormControlFile1" name="image">
   </div>
-  <div class="custom-file">
-    <input type="file" class="custom-file-input" id="inputGroupFile01" name="image">
-    <label class="custom-file-label" for="inputGroupFile01">Choisir un fichier</label>
-  </div>
-</div>
-<div class="input-group">
+  <div class="input-group">
   <div class="input-group-prepend">
     <span class="input-group-text">Description</span>
   </div>

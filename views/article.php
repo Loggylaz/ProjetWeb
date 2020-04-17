@@ -1,4 +1,5 @@
 <?php ob_start() ?>
+<img src="<?= ROOT_PATH . $article['image'] ?>" width="325" height="250">
 <dl class="row">
     <dt class="col-sm-2">Nom</dt> 
     <dd class="col-sm-10"><?= $article['nom']?></dd>
