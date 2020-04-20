@@ -1,5 +1,5 @@
 <?php
-ob_start()
+ob_start();
 ?>
 <form enctype="multipart/form-data" method="POST">
     <div class="form-group">
@@ -26,9 +26,15 @@ ob_start()
         <label for="idmarque">Marque</label>
         <input type="text" class="form-control" id="idmarque" name="marque" value="<?= $article['marque']?>">
     </div>
-    <div class="form-group">
-        <label for="idcategorieID">Catégorie</label>
-        <input type="number" class="form-control" id="idcategorieID" name="categorieID" value="<?= $article['categorieID']?>">
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <label class="input-group-text" for="inputGroupSelect01">Catégorie</label>
+        </div>
+        <select class="custom-select" id="inputGroupSelect01" name="categorieID">
+            <?php foreach($categories as $categorie):?>
+            <option value=<?=$categorie['id']?>><?=$categorie['nom']?></option>
+            <?php endforeach?>
+        </select>
     </div>
   <div class="form-group">
     <label for="exampleFormControlFile1">Image</label>

@@ -1,11 +1,7 @@
 <?php
-
 ob_start();
 ?>
 <h3>Panier</h3>
-<pre>
-<?php print_r($articles); ?>
-</pre>
 <table class="table">
   <thead>
     <tr>

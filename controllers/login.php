@@ -25,6 +25,7 @@ if(!empty($_POST)) {
             $_SESSION['message'] = "Bienvenue ".$user['login'];
             $_SESSION['panier'] = array();
             $_SESSION['role'] = $user['roleID'];
+            $_SESSION['articleQty'] = 0;
             header("Location: ".ROOT_PATH);
             exit();
         }

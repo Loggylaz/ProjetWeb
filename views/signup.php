@@ -1,8 +1,8 @@
-<?php ob_start()?>
-<form method="POST">
+<?php ob_start();?>
+<form method="POST" id="signup">
     <div class="form-group">
         <label for="idlogin">Nom d'utilisateur</label>
-        <input type="text" maxlength="12" placeholder="Pas de caractères spéciaux ni d'espace" pattern="[^()/><\][\\\x22,;|]+" class="form-control" id="idlogin" name="login">
+        <input type="text" maxlength="12" placeholder="Pas de caractères spéciaux ni d'espace" class="form-control" id="idlogin" name="login">
     </div>
     <div class="form-group">
         <label for="idmdp">Mot de passe</label>

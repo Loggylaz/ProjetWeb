@@ -2,7 +2,10 @@
 require_once 'models/db.php';
 
 function getAllFromArticles(){
-    $reponse = getDB()->query('SELECT * FROM ARTICLE');
+    $reponse = getDB()->query('SELECT a.id AS id, a.nom AS nom, prix, categorieID, marque, stock, poid, image, description, c.nom AS categorieNom
+    FROM article AS a
+    JOIN categorie AS c
+    ON a.categorieID = c.id WHERE actif = 1');
     $articles = $reponse->fetchAll();
     $reponse->closeCursor();
     return $articles;
@@ -16,10 +19,10 @@ function getAllFromArticles(){
 
 
 
-function getArticle($nom) {
+function getArticle($id) {
     $articles = getAllFromArticles();
     foreach($articles as $article) {
-        if (strtolower($nom) == strtolower($article['nom'])) {
+        if ($id == $article['id']) {
             return $article;
         }
     }
@@ -44,14 +47,14 @@ function getArticleById($id){
 function setArticle($id, $nom, $prix, $stock = "", $poid = "", $marque = "", $categorieID = "", $image = "", $description = "")
 {
     $reponse = getDB()->prepare('UPDATE ARTICLE SET nom = :nom, prix = :prix, stock = :stock, poid = :poid, marque = :marque, categorieID = :categorieID, image = :image, description = :description WHERE id = :id');
-    $reponse->execute([':id' => $id, ':nom' => $nom, ':prix' => $prix, ':stock' => $stock, ':poid' => $poid, ':marque' => $marque, ':categorieID' => $categorieID, ':image' => $image, ':description' => $description]);
+    $reponse->execute([':id' => $id, ':nom' => str_replace(" ", "_", $nom), ':prix' => $prix, ':stock' => $stock, ':poid' => $poid, ':marque' => $marque, ':categorieID' => $categorieID, ':image' => $image, ':description' => $description]);
     $reponse->closeCursor(); // Termine le traitement de la requête
 }
 
 function createArticle($nom, $prix, $stock = "", $poid = "", $marque = "", $categorieID = "", $image = "", $description = "")
 {
     $reponse = getDB()->prepare('INSERT INTO ARTICLE SET nom = :nom, prix = :prix, stock = :stock, poid = :poid, marque = :marque, categorieID = :categorieID, image = :image, description = :description');
-    $reponse->execute([':nom' => $nom, ':prix' => $prix, ':stock' => $stock, ':poid' => $poid, ':marque' => $marque, ':categorieID' => $categorieID, ':image' => $image, ':description' => $description]);
+    $reponse->execute([':nom' => str_replace(" ", "_", $nom), ':prix' => $prix, ':stock' => $stock, ':poid' => $poid, ':marque' => $marque, ':categorieID' => $categorieID, ':image' => $image, ':description' => $description]);
     $reponse->closeCursor(); // Termine le traitement de la requête
 }
 
@@ -65,7 +68,7 @@ function getAllFromCategories()
 
 function deleteArticle($id)
 {
-    $reponse = getDB()->prepare("DELETE FROM ARTICLE WHERE id = :id");
+    $reponse = getDB()->prepare("UPDATE ARTICLE SET actif = 0 WHERE id = :id");
     $reponse->execute([':id' => $id]);
     $reponse->closeCursor();
 }

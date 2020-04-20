@@ -1,4 +1,4 @@
-<?php ob_start()?>
+<?php ob_start();?>
 <form method="POST">
     <div class="form-group">
         <label for="idlogin">Utilisateur</label>

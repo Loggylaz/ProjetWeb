@@ -18,19 +18,19 @@ ob_start();
   ?>
     <tr>
       <th scope="row"><?= $article['id'] ?></th>
-      <td><?= $article['nom'] ?></td>
+      <td><?= str_replace("_", " ", $article['nom'])?></td>
       <td><?= $article['prix'] ?> €</td>
       <td><img src="<?= ROOT_PATH.$article['image']?>" width="100px" height="100px"></td>
       <td>
           <a href="<?=ROOT_PATH?>article/<?= $article['nom']?>" class="btn btn-primary">Voir<a>
           <a href="<?=ROOT_PATH?>article/<?= $article['id']?>/edit" class="btn btn-warning">Editer</a>
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal<?= $article['id']?>">
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal<?= $article['nom']?>">
               Supprimer
             </button>
 
             <!-- Modal -->
-            <div class="modal fade" id="modal<?= $article['id']?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="modal<?= $article['nom']?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
                   <div class="modal-header">

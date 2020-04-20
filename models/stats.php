@@ -42,5 +42,21 @@ function amountOfBooks(){
     return $books;
 }
 
+function getPurchaseAmountForClients()
+{
+    $reponse = getDB()->query('SELECT u.id AS utilisateurID, u.login AS utilisateurLogin, u.prenom AS utilisateurPrenom, u.nom AS utilisateurNom, 
+    COUNT(DISTINCT(c.id)) AS countCommande, 
+    COUNT(ca.id) AS countArticle, 
+    SUM(c.total) AS totalParUtilisateur 
+    FROM utilisateur AS u 
+    JOIN commande AS c 
+    ON u.id = c.utilisateurID 
+    JOIN commande_article AS ca 
+    ON ca.commandeID = c.id
+    GROUP BY u.id');
+    $amount = $reponse->fetchAll();
+    $reponse->closeCursor();
+    return $amount;
+}
 
 ?>

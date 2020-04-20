@@ -1,4 +1,5 @@
-<?php ob_start() ?>
+<?php ob_start(); ?>
+<pre><?=print_r($article)?></pre>
 <img src="<?= ROOT_PATH . $article['image'] ?>" width="325" height="250">
 <dl class="row">
     <dt class="col-sm-2">Nom</dt> 

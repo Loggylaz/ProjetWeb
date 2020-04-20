@@ -1,9 +1,6 @@
 <?php
 ob_start();
 ?>
-<pre>
-  <?=print_r($_SESSION['panier'])?>
-</pre>
 <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
   <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</a>
   <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Profile</a>
@@ -15,13 +12,14 @@ ob_start();
   <div class="row">
     <?php foreach ($articles as $article) : ?>
       <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
-        <div class="card" style="width: 20rem;">
+        <div class="card" style="width: 91%;">
           <img class="card-img-top" src="<?= ROOT_PATH . $article['image'] ?>" width="325" height="225" alt="Card image cap">
           <div class="card-body">
-            <h3 class="card-title"><?= $article['nom'] ?></h3>
+            <h3 class="card-title"><?= str_replace("_", " ", $article["nom"]) ?></h3>
+            <h5 class="card-subtitle"><?= $article['categorieNom'] ?></h5>
+            <br>
             <h5 class="card-subtitle"><?= $article['prix'] ?> €</h5>
-            <a href="<?= ROOT_PATH ?>article/<?= $article['nom'] ?>" class="btn btn-primary">Détails<a>
-            
+            <a href="<?= ROOT_PATH ?>article/<?= $article['id'] ?>" class="btn btn-primary">Détails<a>
           </div>
           <div class="card-footer">
           <?php if ($_SESSION) : ?>

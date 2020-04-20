@@ -8,7 +8,7 @@ $default = "https://blog.ramboll.com/fehmarnbelt/wp-content/themes/ramboll2/imag
 $size = 310;
 $grav_url = "https://www.gravatar.com/avatar/" . md5( strtolower( trim( $email ) ) ) . "?d=" . urlencode( $default ) . "&s=" . $size;
 
-ob_start()?>
+ob_start();?>
 <img class="rounded-circle mx-auto d-block img-thumbnail" src="<?php echo $grav_url; ?>" alt="" />
 <br>
 Identifiant: <?= $user['id']?>

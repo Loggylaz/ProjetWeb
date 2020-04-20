@@ -17,6 +17,7 @@ if(!empty($_POST)) {
             $user = getUserByLogin($_POST['login']);
             $_SESSION['id'] = $user['id'];
             $_SESSION['panier'] = array();
+            $_SESSION['articleQty'] = 0;
             $_SESSION['role'] = $user['roleID'];
             $_SESSION['message'] = "Bienvenue ".$_POST['login'];
             header('Location: '.ROOT_PATH);
@@ -37,6 +38,4 @@ if(!empty($_POST)) {
 }
 include 'views/signup.php';
 ?>
-
-<!---------------------------------------------------------------------------------------------------------->
 

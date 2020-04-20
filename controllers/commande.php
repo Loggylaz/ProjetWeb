@@ -30,6 +30,7 @@ if(!empty($_SESSION["panier"])){
 
     unset($_SESSION['panier']);
     $_SESSION['panier'] =[];
+    $_SESSION['articleQty'] = 0;
 }
 else
 {

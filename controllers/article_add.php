@@ -49,7 +49,7 @@ if(!empty($_POST)) {
             // Check if $uploadOk is set to 0 by an error
             if ($uploadOk == 0) {
                 if($fileOk != 1){
-                    $imagePath = $target_dir."no-image.png";
+                    $imagePath = $target_dir."no_image.png";
                 }
 
                 // if everything is ok, try to upload file
@@ -58,12 +58,12 @@ if(!empty($_POST)) {
                     $imagePath = $target_file;
                 } else {
                     $_SESSION['error'] = "Il y a eu une erreur lors de l'upload de l'image veuillez rééssayer avec une autre image";
-                    $imagePath = $target_dir."no-image.png";
+                    $imagePath = $target_dir."no_image.png";
                 }
             }
     }else{
         $_SESSION['error'] = "Pas d'image sélectionnée, l'image par défaut est utilisée";
-        $imagePath = "public/images/no-image.png";
+        $imagePath = "public/images/no_image.png";
     }
 
             $article = createArticle($_POST['nom'], $_POST['prix'], $_POST['stock'], $_POST['poid'], $_POST['marque'], $_POST['categorieID'], $imagePath, $_POST['description']);

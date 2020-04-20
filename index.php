@@ -1,5 +1,5 @@
 <?php
-session_start(); // On démarre toujours la session
+session_start();
 define('BDD_LOGIN', "root");
 define('BDD_PASS', "");
 define('ROOT_PATH', "/ProjetSuperette/"); // Chemin qui suit le nom de domaine. Exemple: http://monprojet.local/09_mvc/ le path a indiqué sera donc '/09_mvc/'
