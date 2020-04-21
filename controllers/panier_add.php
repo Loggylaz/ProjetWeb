@@ -20,7 +20,7 @@ array_push($_SESSION['panier'], $article);
 $_SESSION['message'] = "Votre article a bien été ajouté au panier";
 $_SESSION['articleQty'] += $article['quantity'];
 }
-header("Location: ".ROOT_PATH."article#articleIn");
+header("Location: ".ROOT_PATH."article#".$article['id']);
 
 
 

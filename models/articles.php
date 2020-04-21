@@ -91,4 +91,16 @@ function checkArticleExists($nom)
     }
 }
 
+function getAllArticlesByCategorie($nom)
+{
+    $reponse = getDB()->prepare('SELECT a.id AS id, a.nom AS nom, prix, categorieID, marque, stock, poid, image, description, c.nom AS categorieNom
+    FROM article AS a
+    JOIN categorie AS c
+    ON a.categorieID = c.id WHERE actif = 1 AND c.nom = :nom');;
+    $reponse->execute([':nom' => $nom]);
+    $article = $reponse->fetchAll();
+    $reponse->closeCursor();
+    return $article;
+}
+
 ?>

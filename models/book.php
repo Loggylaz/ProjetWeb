@@ -35,9 +35,9 @@ function getLastIdInserted($id)
     return $lastInsertID['commandeID'];
 }
 
-function createCommandeArticle($commandeID, $articleID, $prix){
-    $reponse = getDB()->prepare('INSERT INTO COMMANDE_ARTICLE SET commandeID = :commandeID, articleID = :articleID, prix = :prix');
-    $reponse->execute([':commandeID' => $commandeID, ':articleID' => $articleID, ':prix' => $prix]);
+function createCommandeArticle($commandeID, $articleID, $prix, $quantite){
+    $reponse = getDB()->prepare('INSERT INTO COMMANDE_ARTICLE SET commandeID = :commandeID, articleID = :articleID, prix = :prix, quantite = :quantite');
+    $reponse->execute([':commandeID' => $commandeID, ':articleID' => $articleID, ':prix' => $prix, ':quantite' => $quantite]);
     $reponse->closeCursor();
 }
 
@@ -53,6 +53,19 @@ function getEverythingBookedByUserId($userID, $caID, $articleID){
     $articleEverything = $reponse->fetch();
     $reponse->closeCursor();
     return $articleEverything;
+}
+
+function getAllBooks(){
+    $reponse = getDB()->query('SELECT u.id AS userID, u.nom AS login, ca.id AS commandeArticleID, ca.commandeID AS commandeID, ca.prix AS prix, c.date AS commandeDate, c.utilisateurID AS userID, c.statutID AS statut, c.total AS total
+    FROM utilisateur AS u
+    JOIN commande AS c
+    ON u.id = c.utilisateurID
+    JOIN commande_article AS ca
+    ON ca.commandeID = c.id
+    GROUP BY commandeID');
+    $allBooks = $reponse->fetchAll();
+    $reponse->closeCursor();
+    return $allBooks;
 }
 
 // SELECT a.id AS articleID, a.nom AS articleNom, a.image AS articleImage, a.description AS articleDescription, ca.commandeID AS commandeID, ca.prix AS prix, c.utilisateurID AS userID, c.statutID AS statut, c.total AS total

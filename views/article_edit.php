@@ -32,7 +32,7 @@ ob_start();
         </div>
         <select class="custom-select" id="inputGroupSelect01" name="categorieID">
             <?php foreach($categories as $categorie):?>
-            <option value=<?=$categorie['id']?>><?=$categorie['nom']?></option>
+                <option value=<?=$categorie['id']?> <?php if($categorie['id'] == $article['categorieID']){echo 'selected';} ?>> <?=$categorie['nom']?> </option>
             <?php endforeach?>
         </select>
     </div>

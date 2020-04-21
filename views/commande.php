@@ -2,6 +2,7 @@
 ob_start();
 ?>
 <h3>Merci !!</h3>
+<pre><?=print_r($book)?></pre>
 <table class="table">
   <thead>
     <tr>
@@ -20,7 +21,7 @@ ob_start();
       <td><?= $article['prix'] ?></td>
       <td><img src="<?= ROOT_PATH.$article['image']?>" width="100px" height="100px"></td>
       <td>
-            <a href="<?=ROOT_PATH?>article/<?= $article['nom']?>" class="btn btn-primary">Voir</a>
+            <a href="<?=ROOT_PATH?>article/<?= $article['id']?>" class="btn btn-primary">Voir</a>
             
       </td>
     </tr>

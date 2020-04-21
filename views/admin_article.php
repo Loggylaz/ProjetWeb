@@ -22,7 +22,7 @@ ob_start();
       <td><?= $article['prix'] ?> €</td>
       <td><img src="<?= ROOT_PATH.$article['image']?>" width="100px" height="100px"></td>
       <td>
-          <a href="<?=ROOT_PATH?>article/<?= $article['nom']?>" class="btn btn-primary">Voir<a>
+          <a href="<?=ROOT_PATH?>article/<?= $article['nom']?>" class="btn btn-primary">Voir</a>
           <a href="<?=ROOT_PATH?>article/<?= $article['id']?>/edit" class="btn btn-warning">Editer</a>
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal<?= $article['nom']?>">

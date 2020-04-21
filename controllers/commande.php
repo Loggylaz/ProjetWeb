@@ -12,9 +12,9 @@ $total = 0;
 
 if(!empty($_SESSION["panier"])){
 
-
     foreach($_SESSION['panier'] as $book){
-        array_push($articles, getArticleById($book));
+        $articlesTemp = getArticleByID($book['id']);
+        array_push($articles, array('id' => $articlesTemp['id'], 'nom' => $articlesTemp['nom'], 'prix' => $articlesTemp['prix'], 'stock' => $articlesTemp['stock'], 'poid' => $articlesTemp['poid'], 'marque' => $articlesTemp['marque'], 'categorieID' => $articlesTemp['categorieID'],  'image' => $articlesTemp['image'], 'description' => $articlesTemp['description'],  'quantite' => $book['quantity'] ));
     }
 
     foreach($articles as $article){
@@ -24,8 +24,13 @@ if(!empty($_SESSION["panier"])){
     createCommande($_SESSION['id'], $total);
     $commandeID = getLastIdInserted($_SESSION['id']);
 
+    $quantite = 1;
     foreach($articles as $article){
-        createCommandeArticle($commandeID, $article['id'], $article['prix']);
+        foreach($_SESSION['panier'] as $panier)
+        if($article['id'] == $panier['id']){
+            $quantite = $_SESSION["panier"]['quantite'];
+        }
+        createCommandeArticle($commandeID, $article['id'], $article['prix'], $quantite);
     }
 
     unset($_SESSION['panier']);

@@ -25,15 +25,6 @@ if(REQ_TYPE_ID){
             array_push($articles, getEverythingBookedByUserId($_SESSION['id'], $commande_article['id'], $commande_article['articleID']));
         }
 }
-
-// $array_merged[$commande['id']] = $commande_article;
-// $i = 0;
-// foreach($articles as $article){
-//     $i++;
-//     if(in_array($i, $article)){
-//         $mdr = $articles[$i];
-//     }
-// }
 }
 } 
 else {
