@@ -45,7 +45,7 @@ if (!empty($_POST) && !empty($_POST['nom']) && !empty($_POST['prix'])) {
                 $fileOk = 1;
             }
             //vérifie la taille du fichier
-            if ($_FILES["image"]["size"] > 500000) {
+            if ($_FILES["image"]["size"] > 5000000) {
                 $_SESSION['error'] = "Le fichier est trop gros.";
                 $uploadOk = 0;
             }

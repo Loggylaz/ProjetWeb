@@ -14,11 +14,11 @@ if(!empty($_SESSION["panier"])){
 
     foreach($_SESSION['panier'] as $book){
         $articlesTemp = getArticleByID($book['id']);
-        array_push($articles, array('id' => $articlesTemp['id'], 'nom' => $articlesTemp['nom'], 'prix' => $articlesTemp['prix'], 'stock' => $articlesTemp['stock'], 'poid' => $articlesTemp['poid'], 'marque' => $articlesTemp['marque'], 'categorieID' => $articlesTemp['categorieID'],  'image' => $articlesTemp['image'], 'description' => $articlesTemp['description'],  'quantite' => $book['quantity'] ));
+        array_push($articles, array('id' => $articlesTemp['id'], 'nom' => $articlesTemp['nom'], 'totalParArticle' => $articlesTemp['prix']*$book['quantity'], 'prix' => $articlesTemp['prix'], 'stock' => $articlesTemp['stock'], 'poid' => $articlesTemp['poid'], 'marque' => $articlesTemp['marque'], 'categorieID' => $articlesTemp['categorieID'],  'image' => $articlesTemp['image'], 'description' => $articlesTemp['description'],  'quantite' => $book['quantity'] ));
     }
 
     foreach($articles as $article){
-        $total += $article['prix'];
+        $total += $article['totalParArticle'];
     }
 
     createCommande($_SESSION['id'], $total);
@@ -26,10 +26,11 @@ if(!empty($_SESSION["panier"])){
 
     $quantite = 1;
     foreach($articles as $article){
-        foreach($_SESSION['panier'] as $panier)
+        foreach($_SESSION['panier'] as $panier){
         if($article['id'] == $panier['id']){
-            $quantite = $_SESSION["panier"]['quantite'];
+            $quantite = $panier['quantity'];
         }
+    }
         createCommandeArticle($commandeID, $article['id'], $article['prix'], $quantite);
     }
 

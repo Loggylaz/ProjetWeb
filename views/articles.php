@@ -1,11 +1,12 @@
 <?php
 ob_start();
 ?>
-<div class="btn-group btn-group-toggle" data-toggle="buttons" style="height: 50px; width: 100%;">
+
   <?php foreach ($categories as $categorie) : ?>
-    <a href="<?= ROOT_PATH ?>article/<?= $categorie['direction'] ?>" class="btn btn-primary <?= $categorie['active'] ?>" type="radio"><?= $categorie['nom'] ?></a>
+    <a href="<?= ROOT_PATH ?>article/<?= $categorie['direction'] ?>" style=" width:24%; margin-top: 10px; margin-left:5px; margin-right:3px;" class="btn btn-primary <?= $categorie['active'] ?>" type="radio"><?= $categorie['nom'] ?></a>
   <?php endforeach ?>
-</div>
+
+<br>
 <br>
 <div class="card-deck">
   <div class="row">
@@ -18,7 +19,7 @@ ob_start();
             <h5 class="card-subtitle"><?= $article['categorieNom'] ?></h5>
             <br>
             <h5 class="card-subtitle"><?= $article['prix'] ?> €</h5>
-            <a href="<?= ROOT_PATH ?>article/<?= $article['id'] ?>" class="btn btn-primary">Détails</a>
+            <a href="<?= ROOT_PATH ?>article/<?= $article['nom'] ?>" class="btn btn-primary">Détails</a>
           </div>
           <div class="card-footer">
           <?php if ($_SESSION) : ?>

@@ -2,14 +2,16 @@
 ob_start();
 ?>
 <h3>Merci !!</h3>
-<pre><?=print_r($book)?></pre>
 <table class="table">
   <thead>
     <tr>
       <th scope="col">Date</th>
       <th scope="col">Id</th>
       <th scope="col">Nom</th>
-      <th scope="col">Prix</th>
+      <th scope="col">Prix unitaire</th>
+      <th scope="col">Quantité</th>
+      <th scope="col">Prix total</th>
+
     </tr>
   </thead>
   <tbody>
@@ -18,12 +20,10 @@ ob_start();
       <th scope="row"><?= $article['id'] ?></th>
       <td><?php date('Y-m-d')?></td>
       <td><?= $article['nom'] ?></td>
-      <td><?= $article['prix'] ?></td>
+      <td><?= $article['prix'] ?> €</td>
+      <td><?= $article['quantite'] ?></td>
+      <td><?= $article['totalParArticle'] ?> €</td>
       <td><img src="<?= ROOT_PATH.$article['image']?>" width="100px" height="100px"></td>
-      <td>
-            <a href="<?=ROOT_PATH?>article/<?= $article['id']?>" class="btn btn-primary">Voir</a>
-            
-      </td>
     </tr>
 <?php endforeach ?>
   </tbody>

@@ -5,7 +5,7 @@ function getAllFromArticles(){
     $reponse = getDB()->query('SELECT a.id AS id, a.nom AS nom, prix, categorieID, marque, stock, poid, image, description, c.nom AS categorieNom
     FROM article AS a
     JOIN categorie AS c
-    ON a.categorieID = c.id WHERE actif = 1');
+    ON a.categorieID = c.id WHERE actif = 1 ORDER BY a.id DESC');
     $articles = $reponse->fetchAll();
     $reponse->closeCursor();
     return $articles;
@@ -19,10 +19,10 @@ function getAllFromArticles(){
 
 
 
-function getArticle($id) {
+function getArticle($nom) {
     $articles = getAllFromArticles();
     foreach($articles as $article) {
-        if ($id == $article['id']) {
+        if ($nom == $article['nom']) {
             return $article;
         }
     }
@@ -91,13 +91,13 @@ function checkArticleExists($nom)
     }
 }
 
-function getAllArticlesByCategorie($nom)
+function getAllArticlesByCategorie($nomID)
 {
-    $reponse = getDB()->prepare('SELECT a.id AS id, a.nom AS nom, prix, categorieID, marque, stock, poid, image, description, c.nom AS categorieNom
+    $reponse = getDB()->prepare('SELECT a.id AS id, a.nom AS nom, prix, categorieID, marque, stock, poid, image, description, c.nom AS categorieNom, c.nomID AS categorieNomID
     FROM article AS a
     JOIN categorie AS c
-    ON a.categorieID = c.id WHERE actif = 1 AND c.nom = :nom');;
-    $reponse->execute([':nom' => $nom]);
+    ON a.categorieID = c.id WHERE actif = 1 AND c.nomID = :nomID');;
+    $reponse->execute([':nomID' => $nomID]);
     $article = $reponse->fetchAll();
     $reponse->closeCursor();
     return $article;

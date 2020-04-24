@@ -21,10 +21,6 @@ foreach($_SESSION['panier'] as $articlePanier){
 }
 
 foreach($articles as $article){
-  
-}
-
-foreach($articles as $article){
     $total += $article["totalArticle"];
 }
 

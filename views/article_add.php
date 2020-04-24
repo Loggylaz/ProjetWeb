@@ -1,12 +1,12 @@
 <?php
 ob_start()
 ?>
-<form enctype="multipart/form-data" method="POST">
+<form enctype="multipart/form-data" method="POST" id="article">
 <div class="input-group mb-3">
   <div class="input-group-prepend">
     <span class="input-group-text" id="basic-addon1">Nom</span>
   </div>
-  <input type="text" class="form-control" placeholder="Nom" aria-label="name" aria-describedby="basic-addon1" name="nom">
+  <input type="text" class="form-control" placeholder="Pas de caractères spéciaux" aria-label="name" aria-describedby="basic-addon1" name="nom">
 </div>
 <div class="input-group mb-3">
 <input type="text" min="0.00" max="10000.00" set="0.1" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="0,00" name="prix">

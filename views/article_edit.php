@@ -1,14 +1,14 @@
 <?php
 ob_start();
 ?>
-<form enctype="multipart/form-data" method="POST">
+<form enctype="multipart/form-data" method="POST" id="article">
     <div class="form-group">
         <label for="idid">Identifiant</label>
         <input type="text" class="form-control" id="idid" name="id" value="<?= $article['id']?>" readonly>
     </div>
     <div class="form-group">
         <label for="idnom">Nom</label>
-        <input type="text" class="form-control" id="idnom" name="nom" value="<?= $article['nom']?>">
+        <input type="text" class="form-control" placeholder="Pas de caractères spéciaux" id="idnom" name="nom" value="<?= $article['nom']?>">
     </div>
     <div class="form-group">
         <label for="idprix">Prix</label>
