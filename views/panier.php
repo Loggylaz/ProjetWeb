@@ -16,7 +16,7 @@ ob_start();
     <?php foreach ($articles as $article) :  ?>
       <tr>
         <th scope="row"><?= $article['article']['id'] ?></th>
-        <td><?= $article['article']['nom'] ?></td>
+        <td><?= str_replace("_", " ", $article['article']['nom']) ?></td>
         <td><?= $article['article']['prix'] ?></td>
         <td><?= $article["totalArticle"]?></td>
         <td><?= $article['quantity'] ?></td>

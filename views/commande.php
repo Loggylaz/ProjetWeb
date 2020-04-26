@@ -19,7 +19,7 @@ ob_start();
     <tr>
       <th scope="row"><?= $article['id'] ?></th>
       <td><?php date('Y-m-d')?></td>
-      <td><?= $article['nom'] ?></td>
+      <td><?= str_replace("_", " ", $article['nom']) ?></td>
       <td><?= $article['prix'] ?> €</td>
       <td><?= $article['quantite'] ?></td>
       <td><?= $article['totalParArticle'] ?> €</td>

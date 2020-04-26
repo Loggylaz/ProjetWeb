@@ -1,6 +1,7 @@
 <?php
 ob_start()
 ?>
+<script type="text/javascript" src="regex2.js"></script>
 <form enctype="multipart/form-data" method="POST" id="article">
 <div class="input-group mb-3">
   <div class="input-group-prepend">

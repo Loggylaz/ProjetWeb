@@ -8,7 +8,14 @@ if(empty($_SESSION['id']) && checkUserRole($_SESSION['id'] <= 2 )){
     exit();
 }
 
-$books = getAllBooks();
+if (!REQ_TYPE_ID)
+{
+    $books = getAllBooks();
+    include 'views/admin_books.php';
 
-include 'views/admin_books.php';
+}else{
+    $bookDetails = getBookDetailsByCommandeID(REQ_TYPE_ID);
+    include 'views/book_details.php';
+}
+
 ?>

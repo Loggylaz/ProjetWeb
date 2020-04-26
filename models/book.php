@@ -56,7 +56,7 @@ function getEverythingBookedByUserId($userID, $caID, $articleID){
 }
 
 function getAllBooks(){
-    $reponse = getDB()->query('SELECT u.id AS userID, u.nom AS login, ca.id AS commandeArticleID, ca.commandeID AS commandeID, ca.prix AS prix, c.date AS commandeDate, c.utilisateurID AS userID, c.statutID AS statut, c.total AS total
+    $reponse = getDB()->query('SELECT u.id AS userID, u.login AS login, ca.id AS commandeArticleID, ca.commandeID AS commandeID, ca.prix AS prix, c.date AS commandeDate, c.utilisateurID AS userID, c.statutID AS statut, c.total AS total
     FROM utilisateur AS u
     JOIN commande AS c
     ON u.id = c.utilisateurID
@@ -67,6 +67,24 @@ function getAllBooks(){
     $reponse->closeCursor();
     return $allBooks;
 }
+
+function getBookDetailsByCommandeID($id)
+{
+    $reponse = getDB()->prepare('SELECT c.date AS dateCommande, c.total AS total, u.login AS userLogin, ca.prix AS prix, ca.quantite AS quantite, (ca.prix*ca.quantite) AS totalParArticle, a.nom AS articleNom, a.image AS image
+    FROM commande AS c
+    JOIN commande_article AS ca
+    ON ca.commandeID = c.id
+    JOIN article AS a
+    ON a.id = ca.articleID
+    JOIN utilisateur AS u
+    ON u.id = c.utilisateurID
+    WHERE c.id = :id');
+    $reponse->execute([':id' => $id]);
+    $books = $reponse->fetchAll();
+    $reponse->closeCursor();
+    return $books;
+}
+
 
 // SELECT a.id AS articleID, a.nom AS articleNom, a.image AS articleImage, a.description AS articleDescription, ca.commandeID AS commandeID, ca.prix AS prix, c.utilisateurID AS userID, c.statutID AS statut, c.total AS total
 // FROM article AS a

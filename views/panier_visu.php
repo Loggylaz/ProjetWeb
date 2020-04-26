@@ -20,7 +20,7 @@
   <tbody>
     <?php foreach ($articles as $article) :  ?>
       <tr>
-        <td><?= $article['article']['nom'] ?></td>
+        <td><?= str_replace("_", " ", $article['article']['nom']) ?></td>
         <td><?= $article['article']['prix'] ?></td>
         <td><?= $article["totalArticle"]?></td>
         <td><?= $article['quantity'] ?></td>

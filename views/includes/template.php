@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8" />
-        <link rel="stylesheet" href="<?=ROOT_PATH?>public/css/solar.min.css">
+        <link rel="stylesheet" href="<?=ROOT_PATH?>public/css/flatly.min.css">
         <link rel="stylesheet" href="<?=ROOT_PATH?>public/css/sticky-footer-navbar.css">
         <link rel="stylesheet" href="<?=ROOT_PATH?>public/css/style.css">
          <script src="<?=ROOT_PATH?>public/js/jquery-3.4.1.slim.min.js"></script>
@@ -25,24 +25,24 @@
 
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active"><a class="nav-link" href="<?=ROOT_PATH?>article">Les articles</a></li>
+                    <li class="nav-item"><a class="nav-link" href="<?=ROOT_PATH?>article">Les articles</a></li>
                     <?php if(!empty($_SESSION['id']) && $_SESSION['role'] == 1):?>
-                    <li class="nav-item active"><a class="nav-link" href="<?=ROOT_PATH?>admin_user">Administration Utilisateurs</a></li>
+                    <li class="nav-item"><a class="nav-link" href="<?=ROOT_PATH?>admin_user">Administration Utilisateurs</a></li>
                     <?php endif?>
                     <?php if(!empty($_SESSION['id']) && $_SESSION['role'] <= 2):?>
-                    <li class="nav-item active"><a class="nav-link" href="<?=ROOT_PATH?>admin_article">Administration Articles</a></li>
-                    <li class="nav-item active"><a class="nav-link" href="<?=ROOT_PATH?>admin_stats">Statistiques</a></li>
-                    <li class="nav-item active"><a class="nav-link" href="<?=ROOT_PATH?>admin_books">Commandes</a></li>
+                    <li class="nav-item"><a class="nav-link" href="<?=ROOT_PATH?>admin_article">Administration Articles</a></li>
+                    <li class="nav-item"><a class="nav-link" href="<?=ROOT_PATH?>admin_stats">Statistiques</a></li>
+                    <li class="nav-item"><a class="nav-link" href="<?=ROOT_PATH?>admin_books">Commandes</a></li>
                     <?php endif?>
                 </ul>
             </div>
 
                 <?php if(empty($_SESSION['id'])):?>
-                    <a href="<?=ROOT_PATH?>login" class="btn btn-outline-success my-2 my-sm-0">Se connecter</a>
-                    <a href="<?=ROOT_PATH?>signup" class="btn btn-outline-success my-2 my-sm-0">Créer un compte</a>
+                    <a href="<?=ROOT_PATH?>login" class="btn btn-outline-primary my-2 my-sm-0">Se connecter</a>
+                    <a href="<?=ROOT_PATH?>signup" class="btn btn-outline-primary my-2 my-sm-0">Créer un compte</a>
                 <?php else:?>
                     <div class="dropdown">
-   <button id="myBtn" class="btn btn-outline-success my-2 my-sm-0" class="dropbtn" id="panier">Votre panier <?= $_SESSION['articleQty']?></button>
+   <button id="myBtn" class="btn btn-outline-primary my-2 my-sm-0" class="dropbtn" id="panier">Votre panier <?= $_SESSION['articleQty']?></button>
   <div id="monPanier" class="dropdown-content">
   <iframe style="width:500px;height:500px" src="<?=ROOT_PATH?>panier_visu">
 </iframe>
@@ -52,8 +52,8 @@
   </div>
 </div>
                     
-                    <a href="<?=ROOT_PATH?>user" class="btn btn-outline-info my-2 my-sm-0">Mon compte</a>
-                    <a href="<?=ROOT_PATH?>logout" class="btn btn-outline-success my-2 my-sm-0">Se déconnecter</a>
+                    <a href="<?=ROOT_PATH?>user" class="btn btn-outline-primary my-2 my-sm-0">Mon compte</a>
+                    <a href="<?=ROOT_PATH?>logout" class="btn btn-outline-primary my-2 my-sm-0">Se déconnecter</a>
                 <?php endif?>
         </nav>
         <main role="main" class="container">

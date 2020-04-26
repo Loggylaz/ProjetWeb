@@ -2,11 +2,10 @@
 ob_start();
 ?>
 <h3>Liste des Commandes</h3>
-<pre><?=print_r($books)?></pre>
 <table class="table">
   <thead>
     <tr>
-      <th scope="col">Identifiant</th>
+      <th scope="col">Utilisateur</th>
       <th scope="col">Date de commande</th>
       <th scope="col">Prix total</th>
       <th scope="col">Action</th>
@@ -19,7 +18,7 @@ ob_start();
       <td><?= $book['commandeDate'] ?></td>
       <td><?= $book['total'] ?> €</td>
       <td>
-          <a href="<?=ROOT_PATH?>/book_details" class="btn btn-primary">Voir</a>
+          <a href="<?=ROOT_PATH?>admin_books/<?= $book['commandeID'] ?>" class="btn btn-primary">Voir</a>
       </td>
     </tr>
 <?php endforeach ?>
