@@ -3,7 +3,7 @@
 <html>
     <head>
         <meta charset="utf-8" />
-        <link rel="stylesheet" href="<?=ROOT_PATH?>public/css/solar.min.css">
+        <link rel="stylesheet" href="<?=ROOT_PATH?>public/css/flatly.min.css">
         <script src="<?=ROOT_PATH?>public/js/bootstrap.min.js"></script>
     </head>
     <body>

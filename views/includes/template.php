@@ -11,6 +11,7 @@
         <script src="<?=ROOT_PATH?>public/js/canvasjs.min.js"></script>
         <script src="<?=ROOT_PATH?>public/js/canvasjs.react.js"></script>
         <script src="<?=ROOT_PATH?>public/js/regexArticle.js"></script>
+        <script src="<?=ROOT_PATH?>public/js/stats.js"></script>
         <script src="<?=ROOT_PATH?>public/js/regex.js"></script>
         <script src="<?=ROOT_PATH?>public/js/panier.js"></script>
         

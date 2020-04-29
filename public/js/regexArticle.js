@@ -1,6 +1,6 @@
 function validation(e){
     // regexp commence toujours par un "/"
-    var regex =  /[^a-zA-Z0-9]/; // vérifie si la chaîne commence et termine par au moins un caractère entre a-z et/ou A-Z.
+    var regex =  /[^a-zA-Z0-9 ]/; // vérifie si la chaîne commence et termine par au moins un caractère entre a-z et/ou A-Z.
     var value = e.srcElement.nom.value;
     if(regex.test(value)){
         alert('Pas de caractères spéciaux dans le nom de l\'article!');
