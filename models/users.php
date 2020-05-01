@@ -17,17 +17,17 @@ function getUserByLogin($login) {
     return $user;
 }
 
-function setUser($id, $login, $email, $password, $rue = "", $numero = "", $code_postal = "", $localite = "", $pays = "") {
+function setUser($id, $login, $email, $password, $rue = "", $numero = "", $cp = "", $localite = "", $pays = "", $nom = "", $prenom = "") {
     $user = getUserById($id);
     //C'est ici qu'on va faire l'update de l'utilisateur.
-    $reponse = getDB()->prepare('UPDATE UTILISATEUR SET login = :login, email = :email, mdp = :mdp, rue = :rue, numero = :numero, code_postal = :code_postal, localite = :localite, pays = :pays WHERE id = :id');
+    $reponse = getDB()->prepare('UPDATE UTILISATEUR SET login = :login, mdp = :mdp, email = :email, rue = :rue, numero = :numero, cp = :cp, localite = :localite, pays = :pays, nom = :nom, prenom = :prenom WHERE id = :id');
     if($password){
         $password = password_hash($password, PASSWORD_DEFAULT);
     }
     else {
         $password = $user['mdp'];
     }
-    $reponse->execute([':id' => $id, ':email' => $email, ':mdp' => $password, ':login' => $login, ':rue' => $rue, ':numero' => $numero, ':code_postal' => $code_postal, ':localite' => $localite, ':pays' => $pays ]);
+    $reponse->execute([':id' => $id, ':login' => $login, ':mdp' => $password, ':email' => $email, ':rue' => $rue, ':numero' => $numero, ':cp' => $cp, ':localite' => $localite, ':pays' => $pays, ':nom' => $nom, ':prenom' => $prenom ]);
     $reponse->closeCursor(); // Termine le traitement de la requête
 }
 

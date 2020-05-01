@@ -8,7 +8,7 @@ ob_start();
     </div>
     <div class="form-group">
         <label for="idlogin">Login</label>
-        <input type="text" maxlength="12" placeholder="Pas de caractères spéciaux ni d'espace" pattern="[^()/><\][\\\x22,;|+]" class="form-control" id="idlogin" name="login" value="<?= $user['login']?>">
+        <input type="text" maxlength="12" placeholder="Pas de caractères spéciaux ni d'espace" class="form-control" id="idlogin" name="login" value="<?= $user['login']?>">
     </div>
     <div class="form-group">
         <label for="idemail">Email</label>
@@ -31,8 +31,8 @@ ob_start();
         <input type="text" class="form-control" id="idnumero" name="numero" value="<?= $user['numero']?>">
     </div>
     <div class="form-group">
-        <label for="idcode_postal">Code Postal</label>
-        <input type="text" class="form-control" id="idcode_postal" name="code_postal" value="<?= $user['cp']?>">
+        <label for="idcp">Code Postal</label>
+        <input type="text" class="form-control" id="idcp" name="cp" value="<?= $user['cp']?>">
     </div>
     <div class="form-group">
         <label for="idlocalite">Localité</label>
@@ -42,7 +42,15 @@ ob_start();
         <label for="idpays">Pays</label>
         <input type="text" class="form-control" id="idpays" name="pays" value="<?= $user['pays']?>">
     </div>
-    <button type="submit" class="btn btn-primary">Envoyer</button>
+    <div class="form-group">
+        <label for="idnom">Nom</label>
+        <input type="text" class="form-control" id="idnom" name="nom" value="<?= $user['nom']?>">
+    </div>
+    <div class="form-group">
+        <label for="idprenom">Prenom</label>
+        <input type="text" class="form-control" id="idprenom" name="prenom" value="<?= $user['prenom']?>">
+    </div>
+    <button type="submit" class="btn btn-primary">Editer</button>
 </form>
 <?php
 $title = "Editer";

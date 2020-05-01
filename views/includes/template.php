@@ -5,7 +5,7 @@
         <link rel="stylesheet" href="<?=ROOT_PATH?>public/css/flatly.min.css">
         <link rel="stylesheet" href="<?=ROOT_PATH?>public/css/sticky-footer-navbar.css">
         <link rel="stylesheet" href="<?=ROOT_PATH?>public/css/style.css">
-         <script src="<?=ROOT_PATH?>public/js/jquery-3.4.1.slim.min.js"></script>
+         <script src="<?=ROOT_PATH?>public/js/jquery-3.5.0.min.js"></script>
         <script src="<?=ROOT_PATH?>public/js/popper.min.js"></script>
         <script src="<?=ROOT_PATH?>public/js/bootstrap.min.js"></script>
         <script src="<?=ROOT_PATH?>public/js/canvasjs.min.js"></script>

@@ -3,7 +3,7 @@
 require_once 'models/db.php';
 
 function getAllBooksByUserId($userId){
-    $reponse = getDB()->prepare('SELECT * FROM COMMANDE WHERE utilisateurID = :id ORDER BY id ASC');
+    $reponse = getDB()->prepare('SELECT * FROM COMMANDE WHERE utilisateurID = :id ORDER BY id DESC');
     $reponse->execute([':id' => $userId]);
     $books = $reponse->fetchAll();
     $reponse->closeCursor(); // Termine le traitement de la requête
