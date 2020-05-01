@@ -10,12 +10,11 @@ function totalRevenue(){
 }
 
 function AmountOfEachBoughtArticle(){
-    $reponse = getDB()->query('SELECT a.nom AS nom, ca.articleID AS articleID, COUNT(ca.articleID) AS amount
-    FROM commande_article AS ca
-    JOIN article AS a
+    $reponse = getDB()->query('SELECT a.nom AS nom, SUM(ca.quantite) AS quantite
+    FROM article AS a
+    JOIN commande_article AS ca
     ON a.id = ca.articleID
-    GROUP BY articleID
-    ORDER BY amount DESC');
+    GROUP BY a.id');
     $article = $reponse->fetchAll();
     $reponse->closeCursor();
     return $article;
@@ -44,16 +43,11 @@ function amountOfBooks(){
 
 function getPurchaseAmountForClients()
 {
-    $reponse = getDB()->query('SELECT u.id AS utilisateurID, u.login AS utilisateurLogin, u.prenom AS utilisateurPrenom, u.nom AS utilisateurNom, 
-    COUNT(DISTINCT(c.id)) AS countCommande, 
-    COUNT(ca.id) AS countArticle, 
-    SUM(c.total) AS totalParUtilisateur 
-    FROM utilisateur AS u 
-    JOIN commande AS c 
-    ON u.id = c.utilisateurID 
-    JOIN commande_article AS ca 
-    ON ca.commandeID = c.id
-    GROUP BY u.id');
+    $reponse = getDB()->query('SELECT SUM(c.total) as total, u.login as login
+    FROM commande AS c
+    JOIN utilisateur AS u
+    ON c.utilisateurID = u.ID
+    GROUP BY utilisateurID');
     $amount = $reponse->fetchAll();
     $reponse->closeCursor();
     return $amount;

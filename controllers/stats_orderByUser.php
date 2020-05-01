@@ -2,14 +2,19 @@
 
 require "models/articles.php";
 require "models/stats.php";
+require "models/users.php";
 
+if(empty($_SESSION['id']) || checkUserRole($_SESSION['id'] <= 2 )){
+    header("Location: ".ROOT_PATH);
+    exit();
+}
 
 $chiffreClients = getPurchaseAmountForClients();
 $dataPoints = array();
 
 foreach($chiffreClients as $chiffreClient)
 {
-    $tempArray = array($chiffreClient['utilisateurLogin'], $chiffreClient['totalParUtilisateur']);
+    $tempArray = array($chiffreClient['login'], $chiffreClient['total']);
     array_push($dataPoints, $tempArray);
 }
 
