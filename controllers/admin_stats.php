@@ -1,7 +1,8 @@
 <?php
 
 require 'models/users.php';
-if(empty($_SESSION['id']) || checkUserRole($_SESSION['id'] <= 2 )){
+
+if(empty($_SESSION['id']) || checkUserRole($_SESSION['id']) >= 3 ){
     header("Location: ".ROOT_PATH);
     exit();
 }

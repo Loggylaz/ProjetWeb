@@ -34,7 +34,7 @@ CREATE TABLE `article` (
   PRIMARY KEY (`id`),
   KEY `categorieID` (`categorieID`),
   CONSTRAINT `article_ibfk_1` FOREIGN KEY (`categorieID`) REFERENCES `categorie` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=151 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=111 DEFAULT CHARSET=latin1;
 
 /*Data for the table `article` */
 
@@ -81,21 +81,7 @@ insert  into `article`(`id`,`nom`,`prix`,`stock`,`poid`,`marque`,`categorieID`,`
 (107,'Rosty_McCain',4.00,10,'250gr','McCain',13,'public/images/Rosty.png','',1),
 (108,'Sprite',2.00,100,'2L','Sprite',3,'public/images/Sprite Caffeine-Free Lemon-Lime Soda, 2 L - Walmart_com.jpg','',1),
 (109,'Rum_steak_boeuf_nourrit_a_l\'herbe',2.00,10,'150gr','Behance',2,'public/images/The Grass Fed Beef Co_ on Behance.gif','',1),
-(110,'Boeuf_Wagyu',4.00,150,'250gr','Wagyu',2,'public/images/The world’s most expensive cut of beef is now being sold at ALDI… for a surprising price.png','Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',1),
-(137,'\"é\"\'é\"\'é\"\'é\"',6.00,0,'','',1,'public/images/no_image.png','',1),
-(138,'é\"(é\'§é\'\"§é(§é(',66.00,0,'','',1,'public/images/no_image.png','',1),
-(139,'ééééé',6.00,0,'','',1,'public/images/no_image.png','',1),
-(140,'é\'é\"(&é(&é\"',666.00,0,'','',1,'public/images/no_image.png','',1),
-(141,'é\'\"(é\"\'(\"\'§',156.00,0,'','',1,'public/images/no_image.png','',1),
-(142,'é(\"§é\"(§\"\'',123.00,0,'','',1,'public/images/no_image.png','',1),
-(143,'é(\"\'(é\'\"§',123.00,0,'','',1,'public/images/no_image.png','',1),
-(144,'\"é(\"\'§\"\'§',16.00,NULL,NULL,NULL,1,'public/images/no_image.png',NULL,1),
-(145,'\"ç!(èç!(é\'(',123.00,0,'','',1,'public/images/no_image.png','',1),
-(146,'§è§(\"è§\"§',123.00,0,'','',1,'public/images/no_image.png','',1),
-(147,'z\"(\"é\'§é\'è§\"\'èé(è(è',123.00,0,'','',1,'public/images/no_image.png','',1),
-(148,'\"(\'\"§\"\'§\"\'è(è(§è\"\'§\'\"è\"(\'è\'(!§èè(§è\'(§!',123.00,0,'','',1,'public/images/no_image.png','',1),
-(149,'\"(\'\"§\"\'§\"\'è(è(§è\"\'§\'\"è\"(\'è\'(!§èè(§è\'(§!!',123.00,0,'','',1,'public/images/no_image.png','',1),
-(150,'§(\"\'§\"§',123.00,0,'','',1,'public/images/no_image.png','',1);
+(110,'Boeuf_Wagyu',4.00,150,'250gr','Wagyu',2,'public/images/The world’s most expensive cut of beef is now being sold at ALDI… for a surprising price.png','Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',1);
 
 /*Table structure for table `categorie` */
 
@@ -143,26 +129,18 @@ CREATE TABLE `commande` (
   KEY `statutID` (`statutID`),
   CONSTRAINT `commande_ibfk_1` FOREIGN KEY (`utilisateurID`) REFERENCES `utilisateur` (`id`),
   CONSTRAINT `commande_ibfk_2` FOREIGN KEY (`statutID`) REFERENCES `statut` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=73 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=74 DEFAULT CHARSET=latin1;
 
 /*Data for the table `commande` */
 
 insert  into `commande`(`id`,`utilisateurID`,`statutID`,`total`,`date`) values 
-(58,2,1,1.25,'2020-04-24 11:44:25'),
-(59,2,1,1.25,'2020-04-24 11:48:26'),
-(60,2,1,1.25,'2020-04-24 11:50:53'),
-(61,2,1,11.49,'2020-04-24 11:53:37'),
-(62,2,1,1.25,'2020-04-24 11:54:19'),
-(63,2,1,2.50,'2020-04-24 11:55:43'),
-(64,2,1,2.50,'2020-04-24 11:56:28'),
 (65,2,1,2.50,'2020-04-24 11:57:13'),
 (66,2,1,2.50,'2020-04-24 11:58:14'),
 (67,2,1,12.69,'2020-04-24 11:58:36'),
 (68,2,1,1.25,'2020-04-24 12:03:00'),
-(69,2,1,0.00,'2020-04-24 12:08:08'),
-(70,2,1,0.00,'2020-04-24 12:08:48'),
 (71,2,1,71.05,'2020-04-24 12:09:12'),
-(72,3,1,232.00,'2020-04-26 10:14:53');
+(72,3,1,232.00,'2020-04-26 10:14:53'),
+(73,2,1,70.00,'2020-05-01 13:58:46');
 
 /*Table structure for table `commande_article` */
 
@@ -179,22 +157,11 @@ CREATE TABLE `commande_article` (
   KEY `articleID` (`articleID`),
   CONSTRAINT `commande_article_ibfk_1` FOREIGN KEY (`commandeID`) REFERENCES `commande` (`id`),
   CONSTRAINT `commande_article_ibfk_2` FOREIGN KEY (`articleID`) REFERENCES `article` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=156 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=158 DEFAULT CHARSET=latin1;
 
 /*Data for the table `commande_article` */
 
 insert  into `commande_article`(`id`,`commandeID`,`articleID`,`prix`,`quantite`) values 
-(125,58,1,1.25,NULL),
-(126,59,1,1.25,NULL),
-(127,60,1,1.25,NULL),
-(128,61,1,1.25,NULL),
-(129,61,1,1.25,NULL),
-(130,61,5,8.99,NULL),
-(131,62,1,1.25,NULL),
-(132,63,1,1.25,NULL),
-(133,63,1,1.25,NULL),
-(134,64,1,1.25,NULL),
-(135,64,1,1.25,NULL),
 (136,65,1,1.25,15),
 (137,65,1,1.25,15),
 (138,66,1,1.25,15),
@@ -203,18 +170,14 @@ insert  into `commande_article`(`id`,`commandeID`,`articleID`,`prix`,`quantite`)
 (141,67,5,8.99,5),
 (142,67,27,2.45,3),
 (143,68,1,1.25,10),
-(144,69,1,1.25,12),
-(145,69,5,8.99,4),
-(146,69,27,2.45,5),
-(147,70,1,1.25,12),
-(148,70,5,8.99,5),
-(149,70,27,2.45,3),
 (150,71,1,1.25,15),
 (151,71,5,8.99,5),
 (152,71,27,2.45,3),
 (153,72,109,2.00,10),
 (154,72,105,10.00,2),
-(155,72,103,8.00,24);
+(155,72,103,8.00,24),
+(156,73,110,4.00,10),
+(157,73,108,2.00,15);
 
 /*Table structure for table `role` */
 
@@ -272,25 +235,15 @@ CREATE TABLE `utilisateur` (
   PRIMARY KEY (`id`),
   KEY `roleID` (`roleID`),
   CONSTRAINT `utilisateur_ibfk_1` FOREIGN KEY (`roleID`) REFERENCES `role` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
 
 /*Data for the table `utilisateur` */
 
 insert  into `utilisateur`(`id`,`login`,`mdp`,`email`,`rue`,`numero`,`cp`,`localite`,`pays`,`nom`,`prenom`,`roleID`,`actif`) values 
-(2,'Admin','$2y$10$rGhs4LaIWneDZ3Bu8TElzexBgU6oaelPHpJ24OYJwtar0pyfU1oFe','admin@admin.com','Rue de l\'administration','42','7110','AdminCity','Belgique','Adam','Ministrateur',1,1),
+(2,'Admin','$2y$10$rGhs4LaIWneDZ3Bu8TElzexBgU6oaelPHpJ24OYJwtar0pyfU1oFe','admin@admin.com','Rue de l\'administration','42','7110','AdminCity','Belgique','Ministrateur','Adam',1,1),
 (3,'client','$2y$10$OgWT7RMwGOT2bN6iKGyoWeAP0enkbn2zmpf6K27XkslzR60MBFfGW','client@email.com',NULL,NULL,NULL,NULL,NULL,'client','client',3,1),
 (18,'Manager','$2y$10$TMlpEwZDbcC1bxGZeoyPqefZI/WBDZsTR342cvtUEOST.JrhBjEB.','Manager@superchouette.com','','','','','','Man','Ager',2,1),
-(19,'gravatar','$2y$10$J5qCl6RpLfhJKpkqUTFo8OBFHDumLf0dZNB/H8flZRgW44aCutdl.','benoit.vandenh@hotmail.com',NULL,NULL,NULL,NULL,NULL,'Herrewegen','Benoit',2,1),
-(20,'à','$2y$10$OWX10O8OBMSjhVqegR26juFlqBUJS3g61GT9obsnfPWNoVjDSbViy','ben@test.js',NULL,NULL,NULL,NULL,NULL,'lol','pd',3,1),
-(21,'$','$2y$10$JQqOZRHLVq8ZL7cgUEibmeVgEsXiqZ/5lan1VHpEvw7ZgfVp38qm.','123@123.com',NULL,NULL,NULL,NULL,NULL,'123','123',3,1),
-(22,'/*-/*/\'\"§\'\"è','$2y$10$oSGlojQHGCC4SvulRSkjfumNc1AtcosGI2heQ63z4jgJpgNB6BS4G','123@123.com',NULL,NULL,NULL,NULL,NULL,'123','123',3,1),
-(23,'$^ret$ê','$2y$10$qVhrKInYI4BWBwe8yPJ3.uUyISLqT4FUE8PtjJc7QCVJgQqhL83JS','123@123.com',NULL,NULL,NULL,NULL,NULL,'123','123',3,1),
-(24,'zerz\'(\'§($)à','$2y$10$eaJJx83M27Wlfyeu4LyBxeXW/5lZxRQtGzLuacXAyJL1zHDEc.kjq','123@123.com',NULL,NULL,NULL,NULL,NULL,'123','123',3,1),
-(25,'ben et nuts','$2y$10$MgWdNNUTeSN7OEVayc/Kvei8Oer5T/n7hMI8nebHAHfTb4lij/liG','123@123.com',NULL,NULL,NULL,NULL,NULL,'123','132',3,1),
-(26,'$^p^$\'\"(','$2y$10$h6b93oFmGpH.5SSGvcOU1.6.Gh/Idl9EmKwPkTxZ0BNvblIVuFsKG','123@123.com',NULL,NULL,NULL,NULL,NULL,'123','123',3,1),
-(27,'éé','$2y$10$f6JhGORoKaMoCuUdn7/Hq.KmDVysHDc2wWFGGXCayH/UDN6LxuZSy','123@123.com',NULL,NULL,NULL,NULL,NULL,'1231','321',3,1),
-(28,'test12','$2y$10$YLB1nOXQ1I7qE.crVv/zhuhXUEsXSvJe3I/HIhS2rnvZy4zHGAjLi','123@123.com',NULL,NULL,NULL,NULL,NULL,'123','123',3,1),
-(29,'sdfsqdf','$2y$10$BTDK1GmdYt9.MrXySfJBhO/g.k4BN90l07RatkSuZcTaAQ8OsGnyq','123@123.com',NULL,NULL,NULL,NULL,NULL,'lol','lolo',3,1);
+(19,'gravatar','$2y$10$J5qCl6RpLfhJKpkqUTFo8OBFHDumLf0dZNB/H8flZRgW44aCutdl.','benoit.vandenh@hotmail.com',NULL,NULL,NULL,NULL,NULL,'Herrewegen','Benoit',2,1);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

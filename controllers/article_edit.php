@@ -28,7 +28,7 @@ if (!empty($_POST) && !empty($_POST['nom']) && !empty($_POST['prix'])) {
             $target_file = $target_dir . basename($_FILES["image"]["name"]);
             $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
             
-            //Check if image file is a actual image or fake image
+            //Vérifie le MIME pour voir si il ne s'agit pas d'une fausse image
             if (isset($_FILES["image"])) {
                 $check = getimagesize($_FILES["image"]["tmp_name"]);
                 if ($check !== false) {
@@ -38,30 +38,30 @@ if (!empty($_POST) && !empty($_POST['nom']) && !empty($_POST['prix'])) {
                     $uploadOk = 0;
                 }
             }
-            // Check if file already exists
+            //Vérifie si le fichier existe déjà dans le dossier
             if (file_exists($target_file)) {
                 $imagePath = $target_file;
                 $uploadOk = 0;
                 $fileOk = 1;
             }
-            //vérifie la taille du fichier
+            //Vérifie la taille de l'image
             if ($_FILES["image"]["size"] > 5000000) {
                 $_SESSION['error'] = "Le fichier est trop gros.";
                 $uploadOk = 0;
             }
-            // Allow certain file formats
+            //Vérifie le format de l'image
             if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
                 && $imageFileType != "gif") {
                 $_SESSION['error'] = "Seuls les formats JPG, JPEG, PNG et GIF sont acceptés.";
                 $uploadOk = 0;
             }
-            // Check if $uploadOk is set to 0 by an error
+            //Vérifie si $uploadOk est à 0 = erreur
             if ($uploadOk == 0) {
                 if($fileOk != 1){
                     $imagePath = $target_dir."no_image.png";
                 }
 
-                // if everything is ok, try to upload file
+                //Si tout est ok, on upload
             } else {
                 if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
                     $imagePath = $target_file;

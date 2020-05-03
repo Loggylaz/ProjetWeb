@@ -19,7 +19,7 @@
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
-            <a class="navbar-brand" href="<?=ROOT_PATH?>">E-Shop</a>
+            <a class="navbar-brand" href="<?=ROOT_PATH?>">Super Chouette !</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -76,7 +76,7 @@ if(!empty($_SESSION['error'])){
         </main>
         <footer class="footer bg-dark text-white-50">
             <div class="container">
-                <span class="text-muted">E-Shop</span>
+                <span class="text-muted">Super Chouette</span>
             </div>
         </footer>
     </body>

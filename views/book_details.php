@@ -23,7 +23,7 @@ ob_start();
         <td><?= $details['totalParArticle'] ?></td>
         <td><img src="<?= ROOT_PATH.$details['image'] ?>"width="100px" height="120px"></td>
         <td>
-          <a href="<?=ROOT_PATH?>article/<?= $details['articleNom']?>" class="btn btn-primary">Détails</a>
+          <a href="<?=ROOT_PATH?>article/<?= $details['articleNom']?>" class="btn btn-primary">Détails de l'article</a>
         </td>
       </tr>
     <?php endforeach ?>
